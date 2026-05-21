@@ -314,14 +314,23 @@
   </main>
 
   <section class="section">
-    <h2>Overview</h2>
-    <div class="card">
-      <p>
-        Bernini explores latent semantic planning for video diffusion, aiming to
-        improve long-horizon video generation through structured semantic
-        representations and planning-aware generative modeling.
-      </p>
-    </div>
-  </section>
+  <h2>Overview</h2>
+  <div class="card">
+    <p>
+      Bernini is a unified framework for video generation and editing that connects
+      multimodal large language models with diffusion models. An MLLM-based planner
+      predicts semantic plans in the ViT embedding space, while a DiT-based renderer
+      turns these plans into high-quality videos using text and visual features.
+    </p>
+
+    <p>
+      With semantics as the interface, Bernini preserves the pretrained strengths of
+      both components and enables efficient training. It introduces Segment-Aware 3D
+      RoPE and planner chain-of-thought reasoning, achieving state-of-the-art results
+      across video generation and editing benchmarks.
+    </p>
+  </div>
+</section>
+
 </body>
 </html>
