@@ -11,7 +11,7 @@
 
     <meta
       name="description"
-      content="Bernini is a video diffusion framework with latent semantic planning, supporting V2V, RV2V, and S2V generation."
+      content="Bernini is a unified framework for video generation and editing with self-supervised vision-text reasoning, supporting video editing, reference-guided video editing, and reference-to-video generation."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://bernini-project.github.io/" />
@@ -20,13 +20,22 @@
       name="citation_title"
       content="Bernini: Latent Semantic Planning for Video Diffusion"
     />
-    <meta name="citation_author" content="Author One" />
-    <meta name="citation_author" content="Author Two" />
-    <meta name="citation_author" content="Author Three" />
+    <meta name="citation_author" content="Chenchen Liu" />
+    <meta name="citation_author" content="Junyi Chen" />
+    <meta name="citation_author" content="Lei Li" />
+    <meta name="citation_author" content="Lu Chi" />
+    <meta name="citation_author" content="Mingzhen Sun" />
+    <meta name="citation_author" content="Zhuoying Li" />
+    <meta name="citation_author" content="Yi Fu" />
+    <meta name="citation_author" content="Ruoyu Guo" />
+    <meta name="citation_author" content="Yiheng Wu" />
+    <meta name="citation_author" content="Ge Bai" />
+    <meta name="citation_author" content="Zehuan Yuan" />
+
     <meta name="citation_publication_date" content="2026/05/18" />
     <meta
       name="citation_abstract"
-      content="Bernini introduces latent semantic planning for controllable and coherent video diffusion across V2V, RV2V, and S2V tasks."
+      content="Bernini is a unified framework for video generation and editing that integrates a vision-language model with a diffusion model. It uses self-supervised vision-text reasoning to improve instruction following, complex video editing, reference-based generation, and spatial reasoning."
     />
     <meta
       name="citation_pdf_url"
@@ -46,7 +55,7 @@
     />
     <meta
       property="og:description"
-      content="A video diffusion framework with latent semantic planning for V2V, RV2V, and S2V generation."
+      content="A unified video generation and editing framework with an MLLM-based semantic planner, DiT-based renderer, and self-supervised vision-text reasoning."
     />
     <meta property="og:url" content="https://bernini-project.github.io/" />
     <meta
@@ -64,7 +73,7 @@
     />
     <meta
       name="twitter:description"
-      content="Latent semantic planning for controllable video diffusion."
+      content="Self-supervised vision-text reasoning for unified video generation and editing."
     />
     <meta
       name="twitter:image"
@@ -77,8 +86,8 @@
         "@type": "ScholarlyArticle",
         "name": "Bernini: Latent Semantic Planning for Video Diffusion",
         "headline": "Bernini: Latent Semantic Planning for Video Diffusion",
-        "description": "Bernini introduces latent semantic planning for controllable and coherent video diffusion across V2V, RV2V, and S2V tasks.",
-        "abstract": "Bernini introduces latent semantic planning for controllable and coherent video diffusion across V2V, RV2V, and S2V tasks.",
+        "description": "Bernini is a unified framework for video generation and editing that integrates a vision-language model with a diffusion model. It uses self-supervised vision-text reasoning to improve instruction following, complex video editing, reference-based generation, and spatial reasoning.",
+        "abstract": "Bernini introduces a unified framework for video generation and editing. It combines an MLLM-based semantic planner with a DiT-based renderer, using the MLLM's visual embedding space as a semantic bridge to the diffusion generator. Bernini supports video editing, reference-guided video editing, and reference-to-video generation.",
         "identifier": "arXiv:xxxx.xxxxx",
         "sameAs": [
           "https://arxiv.org/abs/xxxx.xxxxx",
@@ -86,13 +95,17 @@
         ],
         "keywords": [
           "Bernini",
+          "video generation",
+          "video editing",
           "video diffusion",
-          "latent semantic planning",
-          "video-to-video",
-          "reference video-to-video",
-          "sketch-to-video",
-          "text-to-video",
-          "controllable video generation"
+          "self-supervised vision-text reasoning",
+          "MLLM-based semantic planner",
+          "DiT-based renderer",
+          "reference-to-video",
+          "video-to-video editing",
+          "reference-guided video editing",
+          "SA-3D RoPE",
+          "flow matching"
         ],
         "datePublished": "2026-05-18",
         "inLanguage": "en",
@@ -106,12 +119,20 @@
         "codeRepository": "https://github.com/your-org/Bernini",
         "publisher": {
           "@type": "Organization",
-          "name": "Your Organization"
+          "name": "ByteDance"
         },
         "author": [
-          { "@type": "Person", "name": "Author One" },
-          { "@type": "Person", "name": "Author Two" },
-          { "@type": "Person", "name": "Author Three" }
+          { "@type": "Person", "name": "Chenchen Liu" },
+          { "@type": "Person", "name": "Junyi Chen" },
+          { "@type": "Person", "name": "Lei Li" },
+          { "@type": "Person", "name": "Lu Chi" },
+          { "@type": "Person", "name": "Mingzhen Sun" },
+          { "@type": "Person", "name": "Zhuoying Li" },
+          { "@type": "Person", "name": "Yi Fu" },
+          { "@type": "Person", "name": "Ruoyu Guo" },
+          { "@type": "Person", "name": "Yiheng Wu" },
+          { "@type": "Person", "name": "Ge Bai" },
+          { "@type": "Person", "name": "Zehuan Yuan" }
         ]
       }
     </script>
@@ -147,7 +168,7 @@
           <a class="nav-link" href="#overview">Overview</a>
           <a class="nav-link" href="#v2v">V2V</a>
           <a class="nav-link" href="#rv2v">RV2V</a>
-          <a class="nav-link" href="#s2v">S2V</a>
+          <a class="nav-link" href="#r2v">R2V</a>
           <a class="nav-link" href="#framework">Framework</a>
           <a class="nav-link" href="#citation">Citation</a>
         </div>
@@ -158,7 +179,7 @@
             <a href="#overview">Overview</a>
             <a href="#v2v">V2V</a>
             <a href="#rv2v">RV2V</a>
-            <a href="#s2v">S2V</a>
+            <a href="#r2v">R2V</a>
             <a href="#framework">Framework</a>
             <a href="#citation">Citation</a>
           </div>
@@ -168,156 +189,99 @@
 
     <main>
       <header class="hero" id="overview">
-        <div class="container hero-layout">
-          <div class="hero-copy">
-            <p class="eyebrow">Video Diffusion · Latent Planning · Unified Control</p>
+        <div class="container">
+          <div class="hero-title-block">
+            <p class="eyebrow">
+              MLLM Planner · DiT Renderer · Unified Video Generation and Editing
+            </p>
 
-            <h1 class="title">
-              Bernini:
-              <span class="title-keep">
+            <h1 class="title hero-title-full">
+              <span class="hero-title-brand">Bernini</span>
+              <span class="hero-title-gradient">
                 Latent Semantic Planning for Video Diffusion
               </span>
             </h1>
-
-            <div class="authors">
-              <div class="authors-line">
-                <strong>Author One</strong><sup>*</sup>,
-                <strong>Author Two</strong><sup>*†</sup>,
-                <strong>Author Three</strong>,
-                <strong>Author Four</strong>
-              </div>
-              <div class="author-notes">
-                <span><sup>*</sup> Equal contribution</span>
-                <span><sup>†</sup> Corresponding author</span>
-              </div>
-            </div>
-
-            <div class="affiliation">Your Lab / Your Organization</div>
-
-            <p class="hero-summary">
-              Bernini introduces a latent semantic planning paradigm for video
-              diffusion. By organizing high-level motion, structure, and
-              appearance intent in a compact planning space, Bernini enables
-              controllable and temporally coherent video generation across
-              V2V, RV2V, and S2V scenarios.
-            </p>
-
-            <div class="task-pills">
-              <span>V2V</span>
-              <span>RV2V</span>
-              <span>S2V</span>
-              <span>Long-range coherence</span>
-              <span>Semantic control</span>
-            </div>
-
-            <div class="links">
-              <a
-                class="link-btn"
-                href="https://arxiv.org/abs/xxxx.xxxxx"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Paper
-              </a>
-              <a
-                class="link-btn link-btn-muted"
-                href="https://github.com/your-org/Bernini"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Code
-              </a>
-              <a
-                class="link-btn link-btn-muted"
-                href="https://huggingface.co/your-org/Bernini"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Model
-              </a>
-            </div>
           </div>
 
-          <div class="hero-showcase" aria-label="Representative Bernini outputs">
-            <a class="showcase-card showcase-card-large" href="#v2v">
-              <img
-                src="assets/v2v/posters/v2v-01.webp"
-                alt="V2V preview"
-                width="960"
-                height="540"
-              />
-              <video
-                class="showcase-video"
-                src="assets/v2v/videos/v2v-01.mp4"
-                poster="assets/v2v/posters/v2v-01.webp"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-              ></video>
-              <div class="showcase-caption">
-                <span>Video-to-Video</span>
+          <div class="hero-layout hero-layout-below-title">
+            <div class="hero-copy">
+              <div class="affiliation">
+                Bernini Team, ByteDance
               </div>
-            </a>
 
-            <a class="showcase-card" href="#rv2v">
-              <img
-                src="assets/rv2v/posters/rv2v-01.webp"
-                alt="RV2V preview"
-                width="960"
-                height="540"
-              />
-              <video
-                class="showcase-video"
-                data-src="assets/rv2v/videos/rv2v-01.mp4"
-                data-poster="assets/rv2v/posters/rv2v-01.webp"
-                muted
-                loop
-                playsinline
-                preload="none"
-              ></video>
-              <div class="showcase-caption">
-                <span>Reference-guided V2V</span>
-              </div>
-            </a>
+              <p class="hero-summary">
+                Bernini is a unified framework for video generation and editing
+                with self-supervised vision-text reasoning. It combines an
+                MLLM-based semantic planner with a DiT-based renderer: the planner
+                reasons over text, images, videos, and target tokens in a unified
+                multimodal sequence, while the renderer synthesizes high-quality
+                image and video outputs through diffusion-based flow matching.
+              </p>
 
-            <a class="showcase-card" href="#s2v">
-              <img
-                src="assets/s2v/posters/s2v-01.webp"
-                alt="S2V preview"
-                width="960"
-                height="540"
-              />
-              <video
-                class="showcase-video"
-                data-src="assets/s2v/videos/s2v-01.mp4"
-                data-poster="assets/s2v/posters/s2v-01.webp"
-                muted
-                loop
-                playsinline
-                preload="none"
-              ></video>
-              <div class="showcase-caption">
-                <span>Semantic-to-Video</span>
+              <div class="task-pills">
+                <span>V2V</span>
+                <span>RV2V</span>
+                <span>R2V</span>
+                <span>MLLM Planner</span>
+                <span>DiT Renderer</span>
+                <span>SA-3D RoPE</span>
               </div>
-            </a>
+
+              <div class="links">
+                <a
+                  class="link-btn"
+                  href="https://arxiv.org/abs/xxxx.xxxxx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Paper
+                </a>
+                <a
+                  class="link-btn link-btn-muted"
+                  href="https://github.com/your-org/Bernini"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Code
+                </a>
+                <a
+                  class="link-btn link-btn-muted"
+                  href="https://huggingface.co/your-org/Bernini"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Model
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-demo-placeholder" aria-label="Demo video placeholder">
+              <div class="demo-video-frame">
+                <div class="demo-video-inner">
+                  <div class="demo-play-icon" aria-hidden="true"></div>
+                  <p class="demo-placeholder-title">Demo Video</p>
+                  <p class="demo-placeholder-copy">
+                    Placeholder for the Bernini demo video.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
 
       <section class="section section-centered" id="v2v">
         <div class="container">
-          <h2 class="section-title">V2V: Video-to-Video Generation</h2>
+          <h2 class="section-title">V2V: Video Editing</h2>
           <p class="section-copy">
-            Bernini transforms source videos while preserving temporal structure,
-            motion identity, and scene continuity. The latent planner provides a
-            semantic bridge between the input dynamics and the generated visual
-            trajectory.
+            Bernini performs instruction-guided video editing while preserving
+            source structure, motion consistency, and low-level details. Source
+            video features are used by the DiT-based renderer to maintain
+            temporal consistency, while semantic edits are planned by the MLLM.
           </p>
 
           <div class="video-grid">
-            <article class="video-item" data-preview-title="Style transfer with motion preservation">
+            <article class="video-item" data-preview-title="Propagation-based video editing">
               <video
                 data-src="assets/v2v/videos/v2v-01.mp4"
                 data-poster="assets/v2v/posters/v2v-01.webp"
@@ -327,15 +291,15 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Transfer the input video into a cinematic watercolor style while
-                preserving the original motion and layout.
+                Edit the target video using semantic instructions while
+                propagating high-quality changes across frames.
               </p>
               <div class="video-prompt">
-                Cinematic style transfer with motion preservation.
+                Propagation-based video editing with consistent visual quality.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Scene relighting">
+            <article class="video-item" data-preview-title="Human motion-aware editing">
               <video
                 data-src="assets/v2v/videos/v2v-02.mp4"
                 data-poster="assets/v2v/posters/v2v-02.webp"
@@ -345,15 +309,15 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Relight the source scene into a golden-hour atmosphere while
-                keeping camera motion and subject behavior unchanged.
+                Adapt human pose and motion naturally after object addition,
+                removal, or replacement.
               </p>
               <div class="video-prompt">
-                Golden-hour relighting with consistent temporal dynamics.
+                Motion-aware editing for human-object interactions.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Object-aware video transformation">
+            <article class="video-item" data-preview-title="Instruction-guided transformation">
               <video
                 data-src="assets/v2v/videos/v2v-03.mp4"
                 data-poster="assets/v2v/posters/v2v-03.webp"
@@ -363,11 +327,11 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Modify the main subject appearance while preserving its movement,
-                pose, and interaction with the environment.
+                Transform foreground objects, backgrounds, or style while
+                preserving source-video temporal coherence.
               </p>
               <div class="video-prompt">
-                Object-aware transformation with stable identity and motion.
+                Instruction-guided transformation with stable temporal consistency.
               </div>
             </article>
           </div>
@@ -376,15 +340,17 @@
 
       <section class="section section-centered section-alt" id="rv2v">
         <div class="container">
-          <h2 class="section-title">RV2V: Reference-guided Video-to-Video</h2>
+          <h2 class="section-title">RV2V: Reference-guided Video Editing</h2>
           <p class="section-copy">
-            RV2V uses reference visual evidence to guide appearance, identity,
-            style, or scene attributes. Bernini aligns reference semantics with
-            the source video trajectory through latent semantic plans.
+            Bernini supports reference-guided video editing with input video,
+            reference, and target video triplets. The reference provides object
+            or identity information, while the source video provides motion and
+            context. Bernini aligns both through semantic planning and renders
+            the edited video with temporal consistency.
           </p>
 
           <div class="video-grid">
-            <article class="video-item" data-preview-title="Reference identity transfer">
+            <article class="video-item" data-preview-title="Reference object insertion">
               <video
                 data-src="assets/rv2v/videos/rv2v-01.mp4"
                 data-poster="assets/rv2v/posters/rv2v-01.webp"
@@ -394,15 +360,15 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Transfer the reference character identity to the source motion
-                while maintaining coherent facial structure and body movement.
+                Insert or restore a referenced object into the input video while
+                preserving coherent motion and scene interaction.
               </p>
               <div class="video-prompt">
-                Reference identity transfer with source motion control.
+                Reference object insertion with source-video consistency.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Reference style transfer">
+            <article class="video-item" data-preview-title="Reference identity guidance">
               <video
                 data-src="assets/rv2v/videos/rv2v-02.mp4"
                 data-poster="assets/rv2v/posters/rv2v-02.webp"
@@ -412,15 +378,15 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Use the reference clip to provide visual style and texture,
-                while preserving the structure and temporal rhythm of the input.
+                Use a reference image or clip to guide subject identity and
+                appearance during video editing.
               </p>
               <div class="video-prompt">
-                Reference style guidance with stable temporal appearance.
+                Reference identity guidance for video editing.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Reference scene guidance">
+            <article class="video-item" data-preview-title="Reference-aware scene editing">
               <video
                 data-src="assets/rv2v/videos/rv2v-03.mp4"
                 data-poster="assets/rv2v/posters/rv2v-03.webp"
@@ -430,78 +396,80 @@
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Adapt the input video into a reference scene domain while keeping
-                camera movement, spatial layout, and semantic actions aligned.
+                Align reference appearance with the source video trajectory to
+                produce a consistent edited target video.
               </p>
               <div class="video-prompt">
-                Reference scene adaptation with semantic trajectory alignment.
+                Reference-aware scene editing with semantic reasoning.
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-centered" id="s2v">
+      <section class="section section-centered" id="r2v">
         <div class="container">
-          <h2 class="section-title">S2V: Semantic-to-Video Generation</h2>
+          <h2 class="section-title">R2V: Reference-to-Video Generation</h2>
           <p class="section-copy">
-            S2V demonstrates video generation from structured semantic plans,
-            sketches, storyboards, or sparse controls. Bernini expands compact
-            semantic intent into temporally coherent and visually rich videos.
+            Bernini supports reference-to-video generation for both general
+            objects and human subjects. Reference inputs provide subject
+            identity or appearance, while the MLLM planner aligns reference
+            semantics with the generation target and the DiT renderer produces
+            coherent video outputs.
           </p>
 
           <div class="video-grid">
-            <article class="video-item" data-preview-title="Semantic layout to video">
+            <article class="video-item" data-preview-title="Object reference to video">
               <video
-                data-src="assets/s2v/videos/s2v-01.mp4"
-                data-poster="assets/s2v/posters/s2v-01.webp"
+                data-src="assets/r2v/videos/r2v-01.mp4"
+                data-poster="assets/r2v/posters/r2v-01.webp"
                 loop
                 muted
                 playsinline
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Generate a dynamic video from semantic layout constraints,
-                maintaining object relations and plausible motion.
+                Generate a video from an object reference while adapting the
+                subject into a new scene.
               </p>
               <div class="video-prompt">
-                Semantic layout to coherent video trajectory.
+                Object reference-to-video generation with scene adaptation.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Storyboard to video">
+            <article class="video-item" data-preview-title="Person reference to video">
               <video
-                data-src="assets/s2v/videos/s2v-02.mp4"
-                data-poster="assets/s2v/posters/s2v-02.webp"
+                data-src="assets/r2v/videos/r2v-02.mp4"
+                data-poster="assets/r2v/posters/r2v-02.webp"
                 loop
                 muted
                 playsinline
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Convert a sparse storyboard into a continuous video with smooth
-                transitions and consistent scene evolution.
+                Preserve the identity of a referenced person while generating
+                coherent motion in the target video.
               </p>
               <div class="video-prompt">
-                Storyboard-conditioned video generation.
+                Identity-preserving person reference-to-video generation.
               </div>
             </article>
 
-            <article class="video-item" data-preview-title="Sketch-guided video synthesis">
+            <article class="video-item" data-preview-title="Reference-guided motion synthesis">
               <video
-                data-src="assets/s2v/videos/s2v-03.mp4"
-                data-poster="assets/s2v/posters/s2v-03.webp"
+                data-src="assets/r2v/videos/r2v-03.mp4"
+                data-poster="assets/r2v/posters/r2v-03.webp"
                 loop
                 muted
                 playsinline
                 preload="none"
               ></video>
               <p class="video-full-caption" hidden>
-                Generate a vivid video from sketch-level structure, enriching
-                appearance while following the intended motion path.
+                Animate a referenced subject with semantic and motion guidance
+                while preserving visual identity.
               </p>
               <div class="video-prompt">
-                Sketch-guided synthesis with latent semantic planning.
+                Reference-guided generation with identity preservation.
               </div>
             </article>
           </div>
@@ -512,95 +480,59 @@
         <div class="container">
           <h2 class="section-title">Framework</h2>
           <p class="section-copy">
-            Bernini separates high-level semantic planning from low-level video
-            denoising. A latent planner first organizes motion, layout, subject,
-            and scene semantics; the video diffusion backbone then realizes the
-            plan into temporally consistent visual frames.
+            Bernini contains two core components: an MLLM-based semantic planner
+            and a DiT-based renderer. Multimodal inputs are serialized into a
+            unified sequence of text tokens, source visual tokens, and target
+            tokens. The planner performs iterative masked semantic refinement,
+            and the renderer synthesizes final images or videos through
+            flow-matching denoising.
           </p>
 
           <figure class="figure-panel">
             <img
-              src="assets/framework/bernini-framework.webp"
+              src="assets/framework.png"
               alt="Bernini framework"
               class="framework-img"
-              width="2400"
-              height="1200"
               loading="lazy"
               decoding="async"
             />
             <figcaption class="media-caption">
-              Bernini performs latent semantic planning before video diffusion,
-              enabling controllable generation across V2V, RV2V, and S2V tasks.
+              Overview of Bernini. Unified multimodal inputs are encoded into a
+              sequence, the MLLM planner predicts target semantic embeddings,
+              and the DiT renderer generates videos in the VAE latent space.
+              Segment-wise attention and SA-3D RoPE help distinguish multiple
+              source and target visual segments.
             </figcaption>
           </figure>
 
           <div class="feature-grid">
             <article class="feature-card">
-              <h3>Latent Semantic Planning</h3>
+              <h3>MLLM-based Semantic Planner</h3>
               <p>
-                Encodes high-level action, layout, appearance, and temporal
-                intent in a compact planning space.
+                The planner uses a multimodal large language model to reason
+                over text, source images, source videos, and target placeholders.
+                It progressively refines masked target tokens into complete
+                semantic embeddings.
               </p>
             </article>
 
             <article class="feature-card">
-              <h3>Task-unified Control</h3>
+              <h3>DiT-based Renderer</h3>
               <p>
-                Supports video-to-video, reference-guided generation, and
-                semantic-conditioned synthesis within one framework.
+                The renderer performs flow-matching denoising over VAE latent
+                tokens. It is conditioned on semantic embeddings from the
+                planner and source VAE features when available.
               </p>
             </article>
 
             <article class="feature-card">
-              <h3>Temporal Coherence</h3>
+              <h3>Segment-Aware 3D RoPE</h3>
               <p>
-                Maintains stable identity, camera motion, object interaction,
-                and scene continuity over time.
+                SA-3D RoPE augments spatiotemporal rotary embeddings with
+                segment-index-conditioned phases, allowing the model to
+                distinguish tokens from different visual segments.
               </p>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-centered section-comparison" id="comparison">
-        <div class="container">
-          <h2 class="section-title">Showcase Summary</h2>
-          <p class="section-copy">
-            Bernini provides a unified interface for multiple video diffusion
-            control scenarios.
-          </p>
-
-          <div class="summary-table-wrap">
-            <table class="summary-table">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Input</th>
-                  <th>Goal</th>
-                  <th>Key Capability</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>V2V</td>
-                  <td>Source video + instruction</td>
-                  <td>Transform video content or style</td>
-                  <td>Motion-preserving editing</td>
-                </tr>
-                <tr>
-                  <td>RV2V</td>
-                  <td>Source video + reference video/image</td>
-                  <td>Transfer reference semantics</td>
-                  <td>Identity/style/scene guidance</td>
-                </tr>
-                <tr>
-                  <td>S2V</td>
-                  <td>Semantic plan / sketch / storyboard</td>
-                  <td>Generate coherent video</td>
-                  <td>Plan-driven synthesis</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
@@ -619,9 +551,9 @@
               Copy
             </button>
 
-            <pre class="citation-block"><code>@misc{bernini2026latentsemanticplanning,
+            <pre class="citation-block"><code>@misc{liu2026bernini,
   title         = {Bernini: Latent Semantic Planning for Video Diffusion},
-  author        = {Author One and Author Two and Author Three and Author Four},
+  author        = {Chenchen Liu and Junyi Chen and Lei Li and Lu Chi and Mingzhen Sun and Zhuoying Li and Yi Fu and Ruoyu Guo and Yiheng Wu and Ge Bai and Zehuan Yuan},
   year          = {2026},
   eprint        = {xxxx.xxxxx},
   archivePrefix = {arXiv},
@@ -676,7 +608,7 @@
           decoding="async"
         />
 
-        <p>© 2026 Bernini. All rights reserved.</p>
+        <p>© 2026 Bernini Team, ByteDance. All rights reserved.</p>
 
         <p>
           <a

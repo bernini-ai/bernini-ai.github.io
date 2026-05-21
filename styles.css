@@ -213,10 +213,45 @@ summary {
 .title {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(42px, 6vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
   color: var(--text-strong);
+}
+
+.hero-title-full {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #1b2235 0%,
+    #4f4fc4 36%,
+    #4d91d9 68%,
+    #79bddf 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+.hero-title-brand {
+  font-size: 2em;
+  display: block;
+  color: #182033;
+  letter-spacing: -0.06em;
+}
+
+.hero-title-gradient {
+  display: block;
+  margin-top: 18px;
+  color: transparent;
+  background:
+    linear-gradient(
+      90deg,
+      #7d5fd1 0%,
+      #6d79d8 34%,
+      #4f9cda 68%,
+      #76bee2 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 18px 45px rgba(91, 128, 218, 0.16);
 }
 
 .title-keep {
