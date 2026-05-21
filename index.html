@@ -136,7 +136,60 @@
     function makeVideo(src,poster,label){return `<video data-src="${asset(src)}" data-poster="${asset(poster)}" loop muted playsinline preload="none" aria-label="${label}"></video>`}
     function makeReferenceImage(sample){if(!sample.imgExt)return "";const imgName=`${sample.title}_sourceimg.${sample.imgExt}`;return `<div class="sample-reference"><div class="reference-stage"><img src="${asset(imgName)}" alt="Reference image for ${sample.title}" loading="lazy" decoding="async" /></div><span>Reference</span></div>`}
     function makeArticle(sample){const sourceVideo=`${sample.title}_sourcevid.mp4`;const sourcePoster=`${sample.title}_sourcevid.webp`;const outputVideo=sample.output?`${sample.title}_outputvid.mp4`:`${sample.title}_sourcevid.mp4`;const outputPoster=sample.output?`${sample.title}_outputvid.webp`:`${sample.title}_sourcevid.webp`;const badge=sample.type==="rv2v"?"RV2V":"V2V";const isRv2v=!!sample.imgExt;return `<article class="video-item sample-card ${isRv2v?"rv2v-card":""}" data-preview-title="${sample.title}">${isRv2v?`<div class="rv2v-card-head"><span>Reference-guided editing</span><strong>${badge}</strong></div>`:""}<div class="sample-media-grid ${isRv2v?"has-reference":""}">${makeReferenceImage(sample)}<div class="sample-video-pair"><div class="sample-video-block">${makeVideo(sourceVideo,sourcePoster,`Source video for ${sample.title}`)}<span>Before</span></div><div class="sample-video-block sample-output-block">${makeVideo(outputVideo,outputPoster,`Output video for ${sample.title}`)}<span>${sample.output?"After":"Source only"}</span></div></div></div><div class="video-prompt"><span class="sample-badge">${badge}</span><span class="prompt-text">${sample.title}</span></div></article>`}
-    function makeR2VCase(item){const id=item.id;return `<article class="r2v-case" data-r2v-id="${id}"><div class="r2v-case-head"><div><span class="r2v-kicker">R2V Case</span><h3>${id}</h3></div><span class="r2v-badge">3 Images → Video</span></div><div class="r2v-media-row"><div class="r2v-inputs"><figure class="r2v-input"><img src="${r2vAsset(`${id}-sourceimg1.png`)}" alt="R2V ${id} source image 1" loading="lazy" decoding="async" /><figcaption>Input 1</figcaption></figure><figure class="r2v-input"><img src="${r2vAsset(`${id}-sourceimg2.png`)}" alt="R2V ${id} source image 2" loading="lazy" decoding="async" /><figcaption>Input 2</figcaption></figure><figure class="r2v-input"><img src="${r2vAsset(`${id}-sourceimg3.png`)}" alt="R2V ${id} source image 3" loading="lazy" decoding="async" /><figcaption>Input 3</figcaption></figure></div><div class="r2v-output"><video data-src="${r2vAsset(`${id}-outputvid.mp4`)}" loop muted playsinline preload="none" aria-label="R2V ${id} output video"></video><span>Output Video</span></div></div></article>`}
+    function makeR2VCase(item) {
+      const id = item.id;
+
+      return `
+        <article class="r2v-case r2v-case-no-head" data-r2v-id="${id}">
+          <div class="r2v-media-row">
+            <div class="r2v-inputs">
+              <figure class="r2v-input">
+                <img
+                  src="${r2vAsset(`${id}-sourceimg1.png`)}"
+                  alt="R2V ${id} source image 1"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>Input 1</figcaption>
+              </figure>
+
+              <figure class="r2v-input">
+                <img
+                  src="${r2vAsset(`${id}-sourceimg2.png`)}"
+                  alt="R2V ${id} source image 2"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>Input 2</figcaption>
+              </figure>
+
+              <figure class="r2v-input">
+                <img
+                  src="${r2vAsset(`${id}-sourceimg3.png`)}"
+                  alt="R2V ${id} source image 3"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>Input 3</figcaption>
+              </figure>
+            </div>
+
+            <div class="r2v-output">
+              <video
+                data-src="${r2vAsset(`${id}-outputvid.mp4`)}"
+                loop
+                muted
+                playsinline
+                preload="none"
+                aria-label="R2V ${id} output video"
+              ></video>
+              <span>Output Video</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
     function renderSamples(){const groups={v2v:document.getElementById("v2v-grid"),rv2v:document.getElementById("rv2v-grid")};for(const sample of samples){const target=groups[sample.type];if(target)target.insertAdjacentHTML("beforeend",makeArticle(sample))}renderR2VCases();hydrateLazyVideos();enableHoverPlayback();enableR2VHoverPlayback();enableCopyCitation()}
     function renderR2VCases(){const list=document.getElementById("r2v-list");if(!list)return;list.innerHTML=r2vCases.map(makeR2VCase).join("")}
     function hydrateLazyVideos(){const videos=document.querySelectorAll("video[data-src]");if(!("IntersectionObserver" in window)){videos.forEach(loadVideoMeta);return}const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(!entry.isIntersecting)return;loadVideoMeta(entry.target);observer.unobserve(entry.target)})},{rootMargin:"320px 0px"});videos.forEach((video)=>observer.observe(video))}
