@@ -64,15 +64,6 @@
               Bernini is a unified framework for video generation and editing that combines an MLLM-based semantic planner with a DiT-based renderer.
             </p>
 
-            <!-- <div class="task-pills">
-              <span>V2V</span>
-              <span>RV2V</span>
-              <span>R2V</span>
-              <span>MLLM Planner</span>
-              <span>DiT Renderer</span>
-              <span>SA-3D RoPE</span>
-            </div> -->
-
             <div class="links">
               <a class="link-btn" href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener noreferrer">Paper</a>
               <a class="link-btn link-btn-muted" href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
@@ -123,7 +114,7 @@
         <p class="section-copy">Bernini contains an MLLM-based semantic planner and a DiT-based renderer.</p>
 
         <figure class="figure-panel">
-          <img src="assets/framework.png" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async" />
+          <img src="assets/framework.jpg" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async" />
           <figcaption class="media-caption">
             Unified multimodal inputs are encoded into a sequence, the MLLM planner predicts target semantic embeddings,
             and the DiT renderer generates videos in the VAE latent space.
@@ -178,74 +169,43 @@
   </footer>
 
   <script>
-    const SAMPLE_BASE = "assets/samples/";
-    const R2V_BASE = "assets/samples/r2v/";
+    const V2V_BASE = "assets/v2v/";
+    const RV2V_BASE = "assets/rv2v/";
+    const R2V_BASE = "assets/r2v/";
 
     const samples = [
-      { title: "Remove the white sheep on the left side of the frame", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
-      // { title: "Remove the camera held by the man in red", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除红色衣服男子手中的相机" },
-      // { title: "Remove the moving train from the video", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除视频中行进的火车" },
-      { title: "Change the weather from sunny to foggy", editType: "Weather Editing", type: "v2v", output: true, sourceTitle: "天气由晴天转变为大雾天气" },
-      { title: "Change the person's action to squatting down", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将人物动作改为蹲下" },
-      { title: "Change the cat's action to sleeping quietly", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将猫的动作修改为静静睡觉" },
-      // { title: "Change the actions of the two people to hugging", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将视频中两人动作改为拥抱" },
-      { title: "Replace the bowl in the person's hand with a transparent glass bowl", editType: "Object Replacement", type: "v2v", output: true, sourceTitle: "将人物手中的碗换成透明玻璃碗" },
-      // { title: "Change the person's background to a city street", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将人物背景换成在城市街道上" },
-      // { title: "Change the top-down view to an eye-level view", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将俯视视角改为平视视角" },
-      // { title: "Change the weather to a sandstorm", editType: "Weather Editing", type: "v2v", output: true, sourceTitle: "将天气改为沙尘暴" },
-      { title: "Change the eye-level view to a top-down view to show the person's trajectory", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为俯拍视角，展示人物的运动轨迹" },
-      // { title: "Change the eye-level view to an aerial view", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为航拍视角" },
-      { title: "Change the time from daytime to night", editType: "Time Editing", type: "v2v", output: true, sourceTitle: "将时间由白天改为夜晚" },
-      { title: "Shift the focus to the bookshelf in the background", editType: "Focus Editing", type: "v2v", output: true, sourceTitle: "将焦点聚焦在后面书架上" },
-      // { title: "Shift the focus to the man's face", editType: "Focus Editing", type: "v2v", output: true, sourceTitle: "将焦点转移到男人脸部" },
-      { title: "Replace the transparent glass cup with a white ceramic cup", editType: "Object Replacement", type: "v2v", output: true, sourceTitle: "将玻璃透明杯子换成白色陶瓷杯" },
-      // { title: "Change the background to a Minecraft-style village", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景换成MC游戏中的村庄" },
-      { title: "Change the background from a forest to a scene in front of mountains", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
-      // { title: "Enlarge the two flowers in the middle of the video", editType: "Object Editing", type: "v2v", output: true, sourceTitle: "将视频中中间的两朵花变大" },
-      { title: "Change the blue soccer team's uniforms to white", editType: "Attribute Editing", type: "v2v", output: true, sourceTitle: "将踢足球的蓝队队服换成白色" },
-      // { title: "Change the left-right camera movement to a pull-back shot showing the full tabletop and remove camera shake", editType: "Camera Motion Editing", type: "v2v", output: true, sourceTitle: "将镜头左右移动改为向后拉展示桌面全景，消除镜头抖动" },
-      // { title: "Change the zoom-in shot to a right-to-left panning shot", editType: "Camera Motion Editing", type: "v2v", output: true, sourceTitle: "将镜头拉近改为从右往左平移拍摄" },
-      // { title: "Replace the background behind the horse and person with a gorgeous city street scene", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "给马和人身后的背景替换成一个华丽的城市街景的背景" },
-      { title: "Show the strawberries after being left for ten days", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "草莓放置十天后的样子" },
-      { title: "What do the chess pieces look like after one year", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "一年后该象棋遭受磨损后的样子" },
-      { title: "Make the two dogs playfully wrestle with each other", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让两只狗互相扭打着玩" },
-      // { title: "Make the woman run for exercise at dusk", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "让女人在黄昏下锻炼跑步" },
-      { title: "Make the standing tiger scratch the lying tiger with its paw", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让站着的老虎用爪子去抓躺着的老虎" },
+      { title: "Split the frame with a thin black clay line; keep the original war scene on the left and transform the right side into a Russian classical court dance claymation stop-motion scene.", editType: "Style and Scene Editing", type: "v2v", output: true, sourceTitle: "composed1" },
+      { title: "Add two characters to the frame.", editType: "Object Addition", type: "v2v", output: true, sourceTitle: "add1" },
+      { title: "Remove the white sheep on the left side of the frame.", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
+      { title: "Shift the focus to the bookshelf in the background.", editType: "Focus Shift", type: "v2v", output: true, sourceTitle: "将焦点聚焦在后面书架上" },
+      { title: "Change the background from a forest to a scene in front of mountains.", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
+      { title: "Change the perspective from head up to overhead to display the movement trajectory of the character", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为俯拍视角，展示人物的运动轨迹" },
+      { title: "Rearrange the visible black chess pieces from tallest to shortest.", editType: "Spatial Reasoning", type: "v2v", output: true, sourceTitle: "reasoning1" },
+      { title: "Show the strawberries after being left for ten days.", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "草莓放置十天后的样子" },
+      { title: "Make the standing tiger grab the lying tiger with its paw.", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让站着的老虎用爪子去抓躺着的老虎" },
 
-      // { title: "Change the woman's expression to the one in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将女人的表情改成图片中的表情" },
-      { title: "Change the person's background to the scene in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将人物背景换成参考图中的场景" },
-      // { title: "Add the yacht from the reference image onto the sea in the video", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "在视频的海上添加一艘图片中的游艇" },
-      // { title: "Change the background to the scene in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将背景修改为参考图的场景" },
-      { title: "Replace the person's clothes with the clothes in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中人物的衣服换成图片中的衣服" },
-      // { title: "Change the woman's depressed emotion to excited and happy", editType: "Expression Editing", type: "v2v", output: true, sourceTitle: "将视频中女人沮丧的情绪换成兴奋开心的情绪" },
-      // { title: "Change the girl's expression to the one in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中女生的表情改成参考图中的表情" },
-      { title: "Replace the sofa material with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中沙发换成图沙发的材质" },
-      // { title: "Replace the envelope material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的信封换成图片中信封的材质" },
-      { title: "Change the weather in the video to the weather shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的天气变为参考图中的天气" },
-      // { title: "Replace the chess piece material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的棋子换成图片中棋子的材质" },
-      // { title: "Replace the kettle material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的水壶的材质换成图片中的材质" },
-      { title: "Replace the bowl with the bowl material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的碗换成图片中的碗的材质" },
-      { title: "Change the flower color to the color shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中花的颜色改为图片中花的颜色" },
-      // { title: "Replace the plate material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中餐盘换成图中餐盘的材质" },
-      { title: "Change the video style to the style in the reference image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "将视频风格换成图中的风格" },
-      { title: "Change the video style to the style shown in the image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "将视频风格改成图片中风格" },
-      { title: "Generate weather similar to the reference image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "发生类似参考图的天气" },
-      { title: "Change the dog's expression to the one in the image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "把狗改成画面中的表情" }
-    ];
+      { title: "Generate weather similar to the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "发生类似参考图的天气" },
+      { title: "Change the dog's expression to the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "把狗改成画面中的表情" },
+      { title: "Replace the chess pieces in the video with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的棋子换成图片中棋子的材质" },
+      { title: "Replace the kettle material in the video with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的水壶的材质换成图片中的材质" },
+      { title: "Change the video style to the style shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频风格改成图片中风格" },
+      { title: "Add the yacht from the reference image to the sea in the video", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "在视频的海上添加一艘图片中的游艇" },
+      ];
 
     const r2vCases = ["001", "002", "003", "004", "005", "006"].map((id) => ({ id }));
 
-    function asset(name) {
-      return SAMPLE_BASE + encodeURI(name);
+    function asset(name, type = "v2v") {
+      const base = type === "rv2v" ? RV2V_BASE : V2V_BASE;
+      return base + encodeURI(name);
     }
 
     function r2vAsset(name) {
       return R2V_BASE + encodeURI(name);
     }
 
-    function makeVideo(src, poster, label) {
-      const posterUrl = asset(poster);
-      return `<video poster="${posterUrl}" data-src="${asset(src)}" data-poster="${posterUrl}" loop muted playsinline preload="none" aria-label="${label}"></video>`;
+    function makeVideo(src, poster, label, type = "v2v") {
+      const posterUrl = asset(poster, type);
+      return `<video poster="${posterUrl}" data-src="${asset(src, type)}" data-poster="${posterUrl}" loop muted playsinline preload="none" aria-label="${label}"></video>`;
     }
 
     function makeReferenceImage(sample) {
@@ -255,7 +215,7 @@
       return `
         <div class="sample-reference">
           <div class="reference-stage">
-            <img src="${asset(imgName)}" alt="Reference image for ${sample.title}" loading="lazy" decoding="async" />
+            <img src="${asset(imgName, sample.type)}" alt="Reference image for ${sample.title}" loading="lazy" decoding="async" />
           </div>
           <span>Reference</span>
         </div>
@@ -264,9 +224,9 @@
 
     function makeArticle(sample) {
       const baseTitle = sample.sourceTitle || sample.title;
-      const sourceVideo = `${baseTitle}_sourcevid.mp4`;
+      const sourceVideo = `${baseTitle}_sourcevid_web.mp4`;
       const sourcePoster = `${baseTitle}_sourcevid.webp`;
-      const outputVideo = sample.output ? `${baseTitle}_outputvid.mp4` : `${baseTitle}_sourcevid.mp4`;
+      const outputVideo = sample.output ? `${baseTitle}_outputvid_web.mp4` : `${baseTitle}_sourcevid_web.mp4`;
       const outputPoster = sample.output ? `${baseTitle}_outputvid.webp` : `${baseTitle}_sourcevid.webp`;
       const badge = sample.type === "rv2v" ? "RV2V" : (sample.editType || "Video Editing");
       const isRv2v = !!sample.imgExt;
@@ -285,12 +245,12 @@
 
             <div class="sample-video-pair">
               <div class="sample-video-block">
-                ${makeVideo(sourceVideo, sourcePoster, `Source video for ${sample.title}`)}
+                ${makeVideo(sourceVideo, sourcePoster, `Source video for ${sample.title}`, sample.type)}
                 <span>Before</span>
               </div>
 
               <div class="sample-video-block sample-output-block">
-                ${makeVideo(outputVideo, outputPoster, `Output video for ${sample.title}`)}
+                ${makeVideo(outputVideo, outputPoster, `Output video for ${sample.title}`, sample.type)}
                 <span>${sample.output ? "After" : "Source only"}</span>
               </div>
             </div>
@@ -306,29 +266,40 @@
 
     function makeR2VCase(item) {
       const id = item.id;
+      const videoSrc = r2vAsset(`${id}-outputvid_web.mp4`);
+      const posterSrc = r2vAsset(`${id}-outputvid.webp`);
 
       return `
         <article class="r2v-case r2v-case-no-head" data-r2v-id="${id}">
           <div class="r2v-media-row">
             <div class="r2v-inputs">
               <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg1.png`)}" alt="R2V ${id} source image 1" loading="lazy" decoding="async" />
+                <img src="${r2vAsset(`${id}-sourceimg1.jpg`)}" alt="R2V ${id} source image 1" loading="lazy" decoding="async" />
                 <figcaption>Input 1</figcaption>
               </figure>
 
               <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg2.png`)}" alt="R2V ${id} source image 2" loading="lazy" decoding="async" />
+                <img src="${r2vAsset(`${id}-sourceimg2.jpg`)}" alt="R2V ${id} source image 2" loading="lazy" decoding="async" />
                 <figcaption>Input 2</figcaption>
               </figure>
 
               <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg3.png`)}" alt="R2V ${id} source image 3" loading="lazy" decoding="async" />
+                <img src="${r2vAsset(`${id}-sourceimg3.jpg`)}" alt="R2V ${id} source image 3" loading="lazy" decoding="async" />
                 <figcaption>Input 3</figcaption>
               </figure>
             </div>
 
             <div class="r2v-output">
-              <video data-src="${r2vAsset(`${id}-outputvid.mp4`)}" loop muted playsinline preload="none" aria-label="R2V ${id} output video"></video>
+              <video
+                poster="${posterSrc}"
+                data-poster="${posterSrc}"
+                data-src="${videoSrc}"
+                loop
+                muted
+                playsinline
+                preload="none"
+                aria-label="R2V ${id} output video"
+              ></video>
               <span>Output Video</span>
             </div>
           </div>
