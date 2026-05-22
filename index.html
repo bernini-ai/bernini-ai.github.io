@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Bernini: Latent Semantic Planning for Video Diffusion</title>
-  <meta name="description" content="Bernini is a unified framework for video generation and editing with self-supervised vision-text reasoning." />
+  <meta
+    name="description"
+    content="Bernini is a unified framework for video generation and editing with self-supervised vision-text reasoning."
+  />
+
   <link rel="icon" type="image/png" href="assets/bernini-icon.png" />
   <link rel="apple-touch-icon" href="assets/bernini-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,153 +27,100 @@
   <nav class="site-nav" aria-label="Primary navigation">
     <div class="container nav-inner">
       <a class="nav-brand" href="#overview" aria-label="Bernini homepage">
-        <img class="nav-logo" src="assets/bernini-logo.webp" alt="Bernini" width="360" height="120" />
+        <img
+          class="nav-logo"
+          src="assets/bernini-logo.webp"
+          alt="Bernini"
+          width="360"
+          height="120"
+        />
       </a>
 
       <div class="nav-links">
         <a class="nav-link" href="#overview">Overview</a>
-        <a class="nav-link" href="#v2v">V2V</a>
-        <a class="nav-link" href="#rv2v">RV2V</a>
-        <a class="nav-link" href="#r2v">R2V</a>
-        <a class="nav-link" href="#framework">Framework</a>
-        <a class="nav-link" href="#citation">Citation</a>
+        <a class="nav-link" href="#coming-soon">Coming Soon</a>
       </div>
-
-      <details class="nav-more">
-        <summary class="nav-more-toggle">More</summary>
-        <div class="nav-more-menu">
-          <a href="#overview">Overview</a>
-          <a href="#v2v">V2V</a>
-          <a href="#rv2v">RV2V</a>
-          <a href="#r2v">R2V</a>
-          <a href="#framework">Framework</a>
-          <a href="#citation">Citation</a>
-        </div>
-      </details>
     </div>
   </nav>
 
   <main>
     <header class="hero" id="overview">
       <div class="container">
-        <p class="eyebrow">MLLM Planner · DiT Renderer · Unified Video Generation and Editing</p>
+        <p class="eyebrow">
+          MLLM Planner · DiT Renderer · Unified Video Generation and Editing
+        </p>
 
         <h1 class="title hero-title-full">
           <span class="hero-title-brand">Bernini</span>
-          <span class="hero-title-gradient">Latent Semantic Planning for Video Diffusion</span>
+          <span class="hero-title-gradient">
+            Latent Semantic Planning for Video Diffusion
+          </span>
         </h1>
 
-        <div class="hero-layout">
-          <div class="hero-copy">
-            <div class="affiliation">
-              <span>Chenchen Liu<sup>*</sup>, Junyi Chen<sup>*</sup>, Lei Li<sup>*</sup>, Lu Chi<sup>*</sup>, Mingzhen Sun<sup>*</sup>, Zhuoying Li<sup>*</sup>, Yi Fu, Ruoyu Guo, Yiheng Wu, Ge Bai, Zehuan Yuan<sup>†</sup></span>
-              <span class="author-note"><sup>*</sup> Equal contribution  <sup>†</sup> Corresponding author </span>
-            </div>
-
-            <p class="hero-summary">
-              Bernini is a unified framework for video generation and editing that combines an MLLM-based semantic planner with a DiT-based renderer.
-            </p>
-
-            <!-- <div class="task-pills">
-              <span>V2V</span>
-              <span>RV2V</span>
-              <span>R2V</span>
-              <span>MLLM Planner</span>
-              <span>DiT Renderer</span>
-              <span>SA-3D RoPE</span>
-            </div> -->
-
-            <div class="links">
-              <a class="link-btn" href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener noreferrer">Paper</a>
-              <a class="link-btn link-btn-muted" href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
-              <a class="link-btn link-btn-muted" href="https://huggingface.co/your-org/Bernini" target="_blank" rel="noopener noreferrer">Model</a>
-            </div>
+        <div class="hero-content">
+          <div class="affiliation">
+            <span>
+              Bernini Team, ByteDance
+            </span>
+            <!-- <span class="author-note">
+              <sup>*</sup> Equal contribution ·
+              <sup>†</sup> Corresponding author · ByteDance
+            </span> -->
           </div>
 
-          <div class="hero-demo-placeholder">
-            <div class="demo-video-frame">
-              <div class="demo-video-inner">
-                <div class="demo-play-icon"></div>
-                <p class="demo-placeholder-title">Demo Video</p>
-                <p class="demo-placeholder-copy">Placeholder for the Bernini demo video.</p>
-              </div>
-            </div>
+          <p class="hero-summary">
+            Bernini is a unified framework for video generation and editing with
+            self-supervised vision-text reasoning. It combines an MLLM-based
+            semantic planner with a DiT-based renderer.
+          </p>
+
+          <!-- <div class="task-pills">
+            <span>V2V</span>
+            <span>RV2V</span>
+            <span>R2V</span>
+            <span>MLLM Planner</span>
+            <span>DiT Renderer</span>
+            <span>SA-3D RoPE</span>
+          </div> -->
+
+          <div class="links">
+            <a
+              class="link-btn"
+              href="https://arxiv.org/abs/xxxx.xxxxx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Paper
+            </a>
+            <a
+              class="link-btn link-btn-muted"
+              href="https://github.com/your-org/Bernini"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Code
+            </a>
+            <a
+              class="link-btn link-btn-muted"
+              href="https://huggingface.co/your-org/Bernini"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Model
+            </a>
           </div>
         </div>
       </div>
     </header>
 
-    <section class="section section-centered dark-showcase" id="v2v">
-      <div class="container v2v-container">
-        <h2 class="section-title">V2V: Video Editing</h2>
-        <p class="section-copy">Prompt-driven video editing cases. Hover over a card to reveal the editing instruction and play the before/after videos.</p>
-        <div class="video-grid" id="v2v-grid"></div>
-      </div>
-    </section>
-
-    <section class="section section-centered dark-showcase" id="rv2v">
+    <section class="coming-section" id="coming-soon">
       <div class="container">
-        <h2 class="section-title">RV2V: Reference-guided Video Editing</h2>
-        <p class="section-copy">Reference images provide appearance, identity, material, weather, style, or scene guidance.</p>
-        <div class="video-grid" id="rv2v-grid"></div>
-      </div>
-    </section>
-
-    <section class="section section-centered dark-showcase" id="r2v">
-      <div class="container">
-        <h2 class="section-title">R2V: Reference-to-Video Generation</h2>
-        <p class="section-copy">R2V samples use three reference images as inputs and generate one output video. Hover over a row to play the generated video.</p>
-        <div class="r2v-list" id="r2v-list"></div>
-      </div>
-    </section>
-
-    <section class="section section-centered section-framework" id="framework">
-      <div class="container">
-        <h2 class="section-title">Framework</h2>
-        <p class="section-copy">Bernini contains an MLLM-based semantic planner and a DiT-based renderer.</p>
-
-        <figure class="figure-panel">
-          <img src="assets/framework.png" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async" />
-          <figcaption class="media-caption">
-            Unified multimodal inputs are encoded into a sequence, the MLLM planner predicts target semantic embeddings,
-            and the DiT renderer generates videos in the VAE latent space.
-          </figcaption>
-        </figure>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <h3>MLLM-based Semantic Planner</h3>
-            <p>The planner reasons over text, source images, source videos, and target placeholders.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3>DiT-based Renderer</h3>
-            <p>The renderer performs flow-matching denoising over VAE latent tokens.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Segment-Aware 3D RoPE</h3>
-            <p>SA-3D RoPE distinguishes tokens from different visual segments.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="citation">
-      <div class="container">
-        <h2 class="section-title">Citation</h2>
-
-        <div class="citation-card">
-          <button class="copy-citation-btn" type="button">Copy</button>
-          <pre class="citation-block"><code>@misc{liu2026bernini,
-  title         = {Bernini: Latent Semantic Planning for Video Diffusion},
-  author        = {Chenchen Liu and Junyi Chen and Lei Li and Lu Chi and Mingzhen Sun and Zhuoying Li and Yi Fu and Ruoyu Guo and Yiheng Wu and Ge Bai and Zehuan Yuan},
-  year          = {2026},
-  eprint        = {xxxx.xxxxx},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CV},
-  url           = {https://arxiv.org/abs/xxxx.xxxxx}
-}</code></pre>
+        <div class="coming-card">
+          <!-- <p class="coming-kicker">Demo · Code · Model · Samples</p> -->
+          <h2>Coming Soon</h2>
+          <p>
+            We are preparing the demo videos and more visual results.
+          </p>
         </div>
       </div>
     </section>
@@ -171,273 +128,36 @@
 
   <footer>
     <div class="container">
-      <img class="footer-brand-mark" src="assets/bernini-logo.webp" alt="Bernini" width="360" height="120" loading="lazy" decoding="async" />
+      <img
+        class="footer-brand-mark"
+        src="assets/bernini-logo.webp"
+        alt="Bernini"
+        width="360"
+        height="120"
+        loading="lazy"
+        decoding="async"
+      />
+
       <p>© 2026 Bernini Team, ByteDance. All rights reserved.</p>
+
       <p>
-        <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener noreferrer">Paper</a> ·
-        <a href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
+        <a
+          href="https://arxiv.org/abs/xxxx.xxxxx"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Paper
+        </a>
+        ·
+        <a
+          href="https://github.com/your-org/Bernini"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Code
+        </a>
       </p>
     </div>
   </footer>
-
-  <script>
-    const SAMPLE_BASE = "assets/samples/";
-    const R2V_BASE = "assets/samples/r2v/";
-
-    const samples = [
-      { title: "Remove the white sheep on the left side of the frame", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
-      // { title: "Remove the camera held by the man in red", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除红色衣服男子手中的相机" },
-      // { title: "Remove the moving train from the video", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除视频中行进的火车" },
-      { title: "Change the weather from sunny to foggy", editType: "Weather Editing", type: "v2v", output: true, sourceTitle: "天气由晴天转变为大雾天气" },
-      { title: "Change the person's action to squatting down", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将人物动作改为蹲下" },
-      { title: "Change the cat's action to sleeping quietly", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将猫的动作修改为静静睡觉" },
-      // { title: "Change the actions of the two people to hugging", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "将视频中两人动作改为拥抱" },
-      { title: "Replace the bowl in the person's hand with a transparent glass bowl", editType: "Object Replacement", type: "v2v", output: true, sourceTitle: "将人物手中的碗换成透明玻璃碗" },
-      // { title: "Change the person's background to a city street", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将人物背景换成在城市街道上" },
-      // { title: "Change the top-down view to an eye-level view", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将俯视视角改为平视视角" },
-      // { title: "Change the weather to a sandstorm", editType: "Weather Editing", type: "v2v", output: true, sourceTitle: "将天气改为沙尘暴" },
-      { title: "Change the eye-level view to a top-down view to show the person's trajectory", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为俯拍视角，展示人物的运动轨迹" },
-      // { title: "Change the eye-level view to an aerial view", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为航拍视角" },
-      { title: "Change the time from daytime to night", editType: "Time Editing", type: "v2v", output: true, sourceTitle: "将时间由白天改为夜晚" },
-      { title: "Shift the focus to the bookshelf in the background", editType: "Focus Editing", type: "v2v", output: true, sourceTitle: "将焦点聚焦在后面书架上" },
-      // { title: "Shift the focus to the man's face", editType: "Focus Editing", type: "v2v", output: true, sourceTitle: "将焦点转移到男人脸部" },
-      { title: "Replace the transparent glass cup with a white ceramic cup", editType: "Object Replacement", type: "v2v", output: true, sourceTitle: "将玻璃透明杯子换成白色陶瓷杯" },
-      // { title: "Change the background to a Minecraft-style village", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景换成MC游戏中的村庄" },
-      { title: "Change the background from a forest to a scene in front of mountains", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
-      // { title: "Enlarge the two flowers in the middle of the video", editType: "Object Editing", type: "v2v", output: true, sourceTitle: "将视频中中间的两朵花变大" },
-      { title: "Change the blue soccer team's uniforms to white", editType: "Attribute Editing", type: "v2v", output: true, sourceTitle: "将踢足球的蓝队队服换成白色" },
-      // { title: "Change the left-right camera movement to a pull-back shot showing the full tabletop and remove camera shake", editType: "Camera Motion Editing", type: "v2v", output: true, sourceTitle: "将镜头左右移动改为向后拉展示桌面全景，消除镜头抖动" },
-      // { title: "Change the zoom-in shot to a right-to-left panning shot", editType: "Camera Motion Editing", type: "v2v", output: true, sourceTitle: "将镜头拉近改为从右往左平移拍摄" },
-      // { title: "Replace the background behind the horse and person with a gorgeous city street scene", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "给马和人身后的背景替换成一个华丽的城市街景的背景" },
-      { title: "Show the strawberries after being left for ten days", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "草莓放置十天后的样子" },
-      { title: "What do the chess pieces look like after one year", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "一年后该象棋遭受磨损后的样子" },
-      { title: "Make the two dogs playfully wrestle with each other", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让两只狗互相扭打着玩" },
-      // { title: "Make the woman run for exercise at dusk", editType: "Motion Editing", type: "v2v", output: true, sourceTitle: "让女人在黄昏下锻炼跑步" },
-      { title: "Make the standing tiger scratch the lying tiger with its paw", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让站着的老虎用爪子去抓躺着的老虎" },
-
-      // { title: "Change the woman's expression to the one in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将女人的表情改成图片中的表情" },
-      { title: "Change the person's background to the scene in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将人物背景换成参考图中的场景" },
-      // { title: "Add the yacht from the reference image onto the sea in the video", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "在视频的海上添加一艘图片中的游艇" },
-      // { title: "Change the background to the scene in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将背景修改为参考图的场景" },
-      { title: "Replace the person's clothes with the clothes in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中人物的衣服换成图片中的衣服" },
-      // { title: "Change the woman's depressed emotion to excited and happy", editType: "Expression Editing", type: "v2v", output: true, sourceTitle: "将视频中女人沮丧的情绪换成兴奋开心的情绪" },
-      // { title: "Change the girl's expression to the one in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中女生的表情改成参考图中的表情" },
-      { title: "Replace the sofa material with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中沙发换成图沙发的材质" },
-      // { title: "Replace the envelope material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的信封换成图片中信封的材质" },
-      { title: "Change the weather in the video to the weather shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的天气变为参考图中的天气" },
-      // { title: "Replace the chess piece material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的棋子换成图片中棋子的材质" },
-      // { title: "Replace the kettle material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的水壶的材质换成图片中的材质" },
-      { title: "Replace the bowl with the bowl material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的碗换成图片中的碗的材质" },
-      { title: "Change the flower color to the color shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中花的颜色改为图片中花的颜色" },
-      // { title: "Replace the plate material with the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中餐盘换成图中餐盘的材质" },
-      { title: "Change the video style to the style in the reference image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "将视频风格换成图中的风格" },
-      { title: "Change the video style to the style shown in the image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "将视频风格改成图片中风格" },
-      { title: "Generate weather similar to the reference image", type: "rv2v", imgExt: "png", output: true, sourceTitle: "发生类似参考图的天气" },
-      { title: "Change the dog's expression to the one in the image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "把狗改成画面中的表情" }
-    ];
-
-    const r2vCases = ["001", "002", "003", "004", "005", "006"].map((id) => ({ id }));
-
-    function asset(name) {
-      return SAMPLE_BASE + encodeURI(name);
-    }
-
-    function r2vAsset(name) {
-      return R2V_BASE + encodeURI(name);
-    }
-
-    function makeVideo(src, poster, label) {
-      const posterUrl = asset(poster);
-      return `<video poster="${posterUrl}" data-src="${asset(src)}" data-poster="${posterUrl}" loop muted playsinline preload="none" aria-label="${label}"></video>`;
-    }
-
-    function makeReferenceImage(sample) {
-      if (!sample.imgExt) return "";
-      const baseTitle = sample.sourceTitle || sample.title;
-      const imgName = `${baseTitle}_sourceimg.${sample.imgExt}`;
-      return `
-        <div class="sample-reference">
-          <div class="reference-stage">
-            <img src="${asset(imgName)}" alt="Reference image for ${sample.title}" loading="lazy" decoding="async" />
-          </div>
-          <span>Reference</span>
-        </div>
-      `;
-    }
-
-    function makeArticle(sample) {
-      const baseTitle = sample.sourceTitle || sample.title;
-      const sourceVideo = `${baseTitle}_sourcevid.mp4`;
-      const sourcePoster = `${baseTitle}_sourcevid.webp`;
-      const outputVideo = sample.output ? `${baseTitle}_outputvid.mp4` : `${baseTitle}_sourcevid.mp4`;
-      const outputPoster = sample.output ? `${baseTitle}_outputvid.webp` : `${baseTitle}_sourcevid.webp`;
-      const badge = sample.type === "rv2v" ? "RV2V" : (sample.editType || "Video Editing");
-      const isRv2v = !!sample.imgExt;
-
-      return `
-        <article class="video-item sample-card ${isRv2v ? "rv2v-card" : ""}" data-preview-title="${sample.title}">
-          ${isRv2v ? `
-            <div class="rv2v-card-head">
-              <span>Reference-guided editing</span>
-              <strong>RV2V</strong>
-            </div>
-          ` : ""}
-
-          <div class="sample-media-grid ${isRv2v ? "has-reference" : ""}">
-            ${makeReferenceImage(sample)}
-
-            <div class="sample-video-pair">
-              <div class="sample-video-block">
-                ${makeVideo(sourceVideo, sourcePoster, `Source video for ${sample.title}`)}
-                <span>Before</span>
-              </div>
-
-              <div class="sample-video-block sample-output-block">
-                ${makeVideo(outputVideo, outputPoster, `Output video for ${sample.title}`)}
-                <span>${sample.output ? "After" : "Source only"}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="video-prompt">
-            <span class="sample-badge">${badge}</span>
-            <span class="prompt-text">${sample.title}</span>
-          </div>
-        </article>
-      `;
-    }
-
-    function makeR2VCase(item) {
-      const id = item.id;
-
-      return `
-        <article class="r2v-case r2v-case-no-head" data-r2v-id="${id}">
-          <div class="r2v-media-row">
-            <div class="r2v-inputs">
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg1.png`)}" alt="R2V ${id} source image 1" loading="lazy" decoding="async" />
-                <figcaption>Input 1</figcaption>
-              </figure>
-
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg2.png`)}" alt="R2V ${id} source image 2" loading="lazy" decoding="async" />
-                <figcaption>Input 2</figcaption>
-              </figure>
-
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg3.png`)}" alt="R2V ${id} source image 3" loading="lazy" decoding="async" />
-                <figcaption>Input 3</figcaption>
-              </figure>
-            </div>
-
-            <div class="r2v-output">
-              <video data-src="${r2vAsset(`${id}-outputvid.mp4`)}" loop muted playsinline preload="none" aria-label="R2V ${id} output video"></video>
-              <span>Output Video</span>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function renderSamples() {
-      const groups = {
-        v2v: document.getElementById("v2v-grid"),
-        rv2v: document.getElementById("rv2v-grid")
-      };
-
-      for (const sample of samples) {
-        const target = groups[sample.type];
-        if (target) target.insertAdjacentHTML("beforeend", makeArticle(sample));
-      }
-
-      renderR2VCases();
-      hydrateLazyVideos();
-      enableHoverPlayback();
-      enableR2VHoverPlayback();
-      enableCopyCitation();
-    }
-
-    function renderR2VCases() {
-      const list = document.getElementById("r2v-list");
-      if (!list) return;
-      list.innerHTML = r2vCases.map(makeR2VCase).join("");
-    }
-
-    function hydrateLazyVideos() {
-      const videos = document.querySelectorAll("video[data-src]");
-
-      if (!("IntersectionObserver" in window)) {
-        videos.forEach(loadVideoMeta);
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          loadVideoMeta(entry.target);
-          observer.unobserve(entry.target);
-        });
-      }, { rootMargin: "320px 0px" });
-
-      videos.forEach((video) => observer.observe(video));
-    }
-
-    function loadVideoMeta(video) {
-      if (!video.src && video.dataset.src) video.src = video.dataset.src;
-      if (video.dataset.poster) video.poster = video.dataset.poster;
-      video.load();
-    }
-
-    function enableHoverPlayback() {
-      document.querySelectorAll(".sample-card").forEach((card) => {
-        const videos = card.querySelectorAll("video");
-
-        card.addEventListener("mouseenter", () => {
-          videos.forEach((video) => {
-            loadVideoMeta(video);
-            video.play().catch(() => {});
-          });
-        });
-
-        card.addEventListener("mouseleave", () => {
-          videos.forEach((video) => {
-            video.pause();
-            video.currentTime = 0;
-          });
-        });
-      });
-    }
-
-    function enableR2VHoverPlayback() {
-      document.querySelectorAll(".r2v-case").forEach((card) => {
-        const video = card.querySelector("video");
-        if (!video) return;
-
-        card.addEventListener("mouseenter", () => {
-          loadVideoMeta(video);
-          video.play().catch(() => {});
-        });
-
-        card.addEventListener("mouseleave", () => {
-          video.pause();
-          video.currentTime = 0;
-        });
-      });
-    }
-
-    function enableCopyCitation() {
-      const btn = document.querySelector(".copy-citation-btn");
-      const code = document.querySelector(".citation-block code");
-      if (!btn || !code) return;
-
-      btn.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(code.textContent);
-        btn.textContent = "Copied";
-        setTimeout(() => btn.textContent = "Copy", 1200);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", renderSamples);
-  </script>
 </body>
 </html>
