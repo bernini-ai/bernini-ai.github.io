@@ -65,7 +65,7 @@
             </p>
 
             <div class="links">
-              <a class="link-btn" href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener noreferrer">Paper</a>
+              <a class="link-btn" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a>
               <a class="link-btn link-btn-muted" href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
               <a class="link-btn link-btn-muted" href="https://huggingface.co/your-org/Bernini" target="_blank" rel="noopener noreferrer">Model</a>
             </div>
@@ -101,9 +101,9 @@
     </section>
 
     <section class="section section-centered dark-showcase" id="r2v">
-      <div class="container">
+      <div class="container r2v-container">
         <h2 class="section-title">R2V: Reference-to-Video Generation</h2>
-        <p class="section-copy">R2V samples use three reference images as inputs and generate one output video. Hover over a row to play the generated video.</p>
+        <p class="section-copy">R2V samples support any number of reference images as inputs and generate one output video. Hover over a row to play the generated video.</p>
         <div class="r2v-list" id="r2v-list"></div>
       </div>
     </section>
@@ -146,7 +146,7 @@
 
         <div class="citation-card">
           <button class="copy-citation-btn" type="button">Copy</button>
-          <pre class="citation-block"><code>@artical{bernini,
+          <pre class="citation-block"><code>@article{bernini,
   title         = {Bernini: Latent Semantic Planning for Video Diffusion},
   author        = {Chenchen Liu and Junyi Chen and Lei Li and Lu Chi and Mingzhen Sun and Zhuoying Li and Yi Fu and Ruoyu Guo and Yiheng Wu and Ge Bai and Zehuan Yuan},
   journal       = {arXiv preprint arXiv:2605.22344},
@@ -162,7 +162,7 @@
       <img class="footer-brand-mark" src="assets/bernini-icon.png" alt="Bernini" width="360" height="120" loading="lazy" decoding="async" />
       <p>© 2026 Bernini Team, ByteDance. All rights reserved.</p>
       <p>
-        <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener noreferrer">Paper</a> ·
+        <a href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a> ·
         <a href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
       </p>
     </div>
@@ -177,22 +177,79 @@
       { title: "Split the frame with a thin black clay line; keep the original war scene on the left and transform the right side into a Russian classical court dance claymation stop-motion scene.", editType: "Style and Scene Editing", type: "v2v", output: true, sourceTitle: "composed1" },
       { title: "Add two characters to the frame.", editType: "Object Addition", type: "v2v", output: true, sourceTitle: "add1" },
       { title: "Remove the white sheep on the left side of the frame.", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
-      { title: "Shift the focus to the bookshelf in the background.", editType: "Focus Shift", type: "v2v", output: true, sourceTitle: "将焦点聚焦在后面书架上" },
+      { title: "Add cloudy rainstorm effect, and add two people walking with umbrellas on the roadside.", editType: "Focus Shift", type: "v2v", output: true, sourceTitle: "weather" },
       { title: "Change the background from a forest to a scene in front of mountains.", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
       { title: "Change the perspective from head up to overhead to display the movement trajectory of the character", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "将平视视角改为俯拍视角，展示人物的运动轨迹" },
-      { title: "Rearrange the visible black chess pieces from tallest to shortest.", editType: "Spatial Reasoning", type: "v2v", output: true, sourceTitle: "reasoning1" },
+      { title: "Convert the screen to a cyberpunk style, change all lights to neon blue purple color scheme, and add a technological halo.", editType: "Style Transfer", type: "v2v", output: true, sourceTitle: "style" },
       { title: "Show the strawberries after being left for ten days.", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "草莓放置十天后的样子" },
       { title: "Make the standing tiger grab the lying tiger with its paw.", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让站着的老虎用爪子去抓躺着的老虎" },
 
-      { title: "Generate weather similar to the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "发生类似参考图的天气" },
-      { title: "Change the dog's expression to the one shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "把狗改成画面中的表情" },
+      { title: "Add the specific cat toy from the reference image—a fluffy, light beige, elongated plush toy with colorful braided ribbons at one end—onto the white floor directly in front of the brown cardboard couch, near the tabby cat's dangling front paw.", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "add" },
       { title: "Replace the chess pieces in the video with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的棋子换成图片中棋子的材质" },
-      { title: "Replace the kettle material in the video with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的水壶的材质换成图片中的材质" },
       { title: "Change the video style to the style shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频风格改成图片中风格" },
-      { title: "Add the yacht from the reference image to the sea in the video", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "在视频的海上添加一艘图片中的游艇" },
-      ];
+      { title: "Replace the purple flowers in the video with the white daisies from the reference image, featuring crisp white petals and prominent, textured yellow centers.", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "11" },
+      { title: "Replace the kettle material in the video with the material shown in the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的水壶的材质换成图片中的材质" },
+      { title: "Generate weather similar to the reference image", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "发生类似参考图的天气" }
+    ];
 
-    const r2vCases = ["001", "002", "003", "004", "005", "006"].map((id) => ({ id }));
+    /*
+      R2V 输入图配置：
+      - inputs 支持任意数量图片。
+      - 如果某个 case 有 1 张、2 张、4 张、5 张或更多输入图，只需要修改 inputs 数组。
+      - outputVideo / outputPoster 可选，不填时默认使用：
+        `${id}-outputvid_web.mp4`
+        `${id}-outputvid.webp`
+    */
+    const r2vCases = [
+      {
+        id: "005",
+        inputs: [
+          "005-sourceimg1.jpg",
+          "005-sourceimg2.jpg",
+          "005-sourceimg3.jpg"
+        ]
+      },
+      {
+        id: "001",
+        inputs: [
+          "001-sourceimg1.jpg",
+          "001-sourceimg2.jpg",
+          "001-sourceimg3.jpg"
+        ]
+      },
+      {
+        id: "002",
+        inputs: [
+          "002-sourceimg1.jpg",
+          "002-sourceimg2.jpg",
+          // "002-sourceimg3.jpg"
+        ]
+      }
+
+      /*
+      示例：任意张输入图都可以。
+
+      {
+        id: "006",
+        inputs: [
+          "006-sourceimg1.jpg",
+          "006-sourceimg2.jpg"
+        ]
+      },
+      {
+        id: "007",
+        inputs: [
+          "007-sourceimg1.jpg",
+          "007-sourceimg2.jpg",
+          "007-sourceimg3.jpg",
+          "007-sourceimg4.jpg",
+          "007-sourceimg5.jpg"
+        ],
+        outputVideo: "007-outputvid_web.mp4",
+        outputPoster: "007-outputvid.webp"
+      }
+      */
+    ];
 
     function asset(name, type = "v2v") {
       const base = type === "rv2v" ? RV2V_BASE : V2V_BASE;
@@ -264,29 +321,34 @@
       `;
     }
 
+    function makeR2VInputImage(src, index, id) {
+      return `
+        <figure class="r2v-input">
+          <img src="${r2vAsset(src)}" alt="R2V ${id} source image ${index + 1}" loading="lazy" decoding="async" />
+          <figcaption>Input ${index + 1}</figcaption>
+        </figure>
+      `;
+    }
+
     function makeR2VCase(item) {
       const id = item.id;
-      const videoSrc = r2vAsset(`${id}-outputvid_web.mp4`);
-      const posterSrc = r2vAsset(`${id}-outputvid.webp`);
+
+      const inputs = Array.isArray(item.inputs) && item.inputs.length > 0
+        ? item.inputs
+        : [`${id}-sourceimg1.jpg`];
+
+      const videoSrc = r2vAsset(item.outputVideo || `${id}-outputvid_web.mp4`);
+      const posterSrc = r2vAsset(item.outputPoster || `${id}-outputvid.webp`);
 
       return `
-        <article class="r2v-case r2v-case-no-head" data-r2v-id="${id}">
+        <article
+          class="r2v-case r2v-case-no-head"
+          data-r2v-id="${id}"
+          style="--r2v-input-count: ${inputs.length};"
+        >
           <div class="r2v-media-row">
             <div class="r2v-inputs">
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg1.jpg`)}" alt="R2V ${id} source image 1" loading="lazy" decoding="async" />
-                <figcaption>Input 1</figcaption>
-              </figure>
-
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg2.jpg`)}" alt="R2V ${id} source image 2" loading="lazy" decoding="async" />
-                <figcaption>Input 2</figcaption>
-              </figure>
-
-              <figure class="r2v-input">
-                <img src="${r2vAsset(`${id}-sourceimg3.jpg`)}" alt="R2V ${id} source image 3" loading="lazy" decoding="async" />
-                <figcaption>Input 3</figcaption>
-              </figure>
+              ${inputs.map((src, index) => makeR2VInputImage(src, index, id)).join("")}
             </div>
 
             <div class="r2v-output">
