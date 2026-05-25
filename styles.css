@@ -591,31 +591,6 @@ summary {
   box-shadow: 0 26px 72px rgba(90, 113, 156, .28), 0 0 0 1px rgba(178, 146, 246, .22);
 }
 
-.rv2v-card-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 13px 16px 0;
-  color: var(--text-muted);
-  background: transparent;
-}
-
-.rv2v-card-head span {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .02em;
-}
-
-.rv2v-card-head strong {
-  padding: 4px 9px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 11px;
-  background: linear-gradient(135deg, #a47cee, #6f9de8);
-  box-shadow: 0 8px 18px rgba(111, 157, 232, .22);
-}
-
 #rv2v .sample-media-grid.has-reference {
   display: grid;
   grid-template-columns: minmax(150px, .82fr) minmax(0, 1.9fr);
