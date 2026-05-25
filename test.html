@@ -90,7 +90,7 @@
     <section class="section section-centered dark-showcase" id="v2v">
       <div class="container v2v-container">
         <h2 class="section-title">V2V: Video Editing</h2>
-        <p class="section-copy">Prompt-driven video editing cases. Hover over a card to reveal the editing instruction and play the before/after videos.</p>
+        <p class="section-copy">Prompt-driven video editing cases. Hover over a card to reveal the editing instruction and play the videos.</p>
         <div class="video-grid" id="v2v-grid"></div>
       </div>
     </section>
@@ -98,7 +98,7 @@
     <section class="section section-centered dark-showcase" id="rv2v">
       <div class="container">
         <h2 class="section-title">RV2V: Reference-guided Video Editing</h2>
-        <p class="section-copy">Reference images provide appearance, identity, material, weather, style, or scene guidance.</p>
+        <p class="section-copy">Reference images provide object, material, weather, or style guidance.</p>
         <div class="video-grid" id="rv2v-grid"></div>
       </div>
     </section>
@@ -178,7 +178,7 @@
 
     const samples = [
       { title: "Split the frame with a thin black clay line; keep the original war scene on the left and transform the right side into a Russian classical court dance claymation stop-motion scene.", editType: "Style and Scene Editing", type: "v2v", output: true, sourceTitle: "composed1" },
-      { title: "Add two characters to the video and adjust the visuals to a warm, rich vintage tone with golden and ochre-red hues.", editType: "Addition and Tone Adjustment", type: "v2v", output: true, sourceTitle: "add1" },
+      { title: "Add two characters to the video and adjust the visuals to a warm, rich vintage tone with golden and ochre-red hues.", editType: "Object Addition and Tone Adjustment", type: "v2v", output: true, sourceTitle: "add1" },
       { title: "Remove the white sheep on the left side of the video.", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
       { title: "Add cloudy rainstorm effect, and add two people walking with umbrellas on the roadside.", editType: "Weather Change and Object Addition", type: "v2v", output: true, sourceTitle: "weather" },
       { title: "Change the background from a forest to a scene in front of mountains.", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
