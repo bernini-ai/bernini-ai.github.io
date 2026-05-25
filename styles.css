@@ -58,6 +58,11 @@ summary {
   width: min(1520px, calc(100% - 24px));
 }
 
+/* R2V 展示区域稍微加宽，给 reference images 更多空间 */
+.r2v-container {
+  width: min(1380px, calc(100% - 32px));
+}
+
 .site-nav {
   position: sticky;
   top: 0;
@@ -720,6 +725,12 @@ summary {
   background: linear-gradient(135deg, #a47cee, #6f9de8);
 }
 
+/* =========================
+   R2V
+   支持任意数量 reference images
+   reference images 更大，output video 更小
+   ========================= */
+
 .r2v-list {
   display: grid;
   grid-template-columns: 1fr;
@@ -742,12 +753,16 @@ summary {
   box-shadow: 0 28px 76px rgba(90, 113, 156, .28), 0 0 0 1px rgba(120, 220, 235, .18);
 }
 
-/* R2V：输入图像和输出视频宽度相同，避免视频过大 */
+/*
+  左侧输入图更大，右侧输出视频更小。
+  输入图数量由 HTML 中的 inputs 数组控制，CSS 自动换行。
+*/
 .r2v-media-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.0fr) minmax(300px, .9fr);
   gap: 14px;
   padding: 14px;
+  align-items: stretch;
   background:
     radial-gradient(circle at 10% 0%, rgba(120, 190, 205, .12), transparent 36%),
     radial-gradient(circle at 100% 20%, rgba(143, 111, 214, .12), transparent 34%),
@@ -756,15 +771,16 @@ summary {
 
 .r2v-inputs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 12px;
+  align-content: stretch;
 }
 
 .r2v-input {
   position: relative;
   overflow: hidden;
   margin: 0;
-  min-height: 260px;
+  min-height: 300px;
   border-radius: 18px;
   background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, .8), transparent 44%), #f8f5ff;
   border: 1px solid rgba(126, 151, 196, .32);
@@ -774,10 +790,10 @@ summary {
 .r2v-input img {
   width: 100%;
   height: 100%;
-  min-height: 260px;
+  min-height: 300px;
   object-fit: contain;
   object-position: center;
-  padding: 8px;
+  padding: 10px;
   transition: transform .35s ease, filter .35s ease;
 }
 
@@ -806,7 +822,9 @@ summary {
 .r2v-output {
   position: relative;
   overflow: hidden;
-  min-height: 260px;
+  min-height: 300px;
+  max-height: 360px;
+  align-self: center;
   border-radius: 18px;
   background: linear-gradient(180deg, #fbfcff 0%, #f3f7ff 100%);
   border: 1px solid rgba(120, 190, 205, .32);
@@ -816,7 +834,9 @@ summary {
 .r2v-output video {
   width: 100%;
   height: 100%;
-  min-height: 260px;
+  min-height: 300px;
+  max-height: 360px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center;
   background: #dce8f7;
@@ -955,6 +975,18 @@ footer a {
   .v2v-container {
     width: min(100% - 24px, 1180px);
   }
+
+  .r2v-container {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .r2v-media-row {
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  }
+
+  .r2v-inputs {
+    grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
+  }
 }
 
 @media (max-width: 980px) {
@@ -983,11 +1015,19 @@ footer a {
     grid-template-columns: 1fr;
   }
 
+  .r2v-inputs {
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  }
+
   .r2v-input,
-  .r2v-input img,
+  .r2v-input img {
+    min-height: 260px;
+  }
+
   .r2v-output,
   .r2v-output video {
-    min-height: 220px;
+    min-height: 240px;
+    max-height: 320px;
   }
 }
 
@@ -997,6 +1037,10 @@ footer a {
   }
 
   .v2v-container {
+    width: min(100% - 16px, 1180px);
+  }
+
+  .r2v-container {
     width: min(100% - 16px, 1180px);
   }
 
@@ -1046,7 +1090,7 @@ footer a {
     padding: 64px 0;
   }
 
-    .section-title {
+  .section-title {
     font-size: clamp(30px, 10vw, 42px);
   }
 
@@ -1113,7 +1157,7 @@ footer a {
     aspect-ratio: 16 / 9;
   }
 
-  /* 移动端 R2V：先显示三张输入图，再显示输出视频 */
+  /* 移动端 R2V：输入图数量不固定，自动换行；输出视频保持较小尺寸 */
   .r2v-media-row {
     padding: 10px;
     gap: 10px;
@@ -1121,13 +1165,13 @@ footer a {
   }
 
   .r2v-inputs {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
     gap: 8px;
   }
 
   .r2v-input,
   .r2v-input img {
-    min-height: 150px;
+    min-height: 210px;
   }
 
   .r2v-input img {
@@ -1136,7 +1180,8 @@ footer a {
 
   .r2v-output,
   .r2v-output video {
-    min-height: 220px;
+    min-height: 210px;
+    max-height: 280px;
   }
 
   .r2v-input figcaption,
@@ -1166,6 +1211,10 @@ footer a {
   }
 
   .v2v-container {
+    width: min(100% - 12px, 1180px);
+  }
+
+  .r2v-container {
     width: min(100% - 12px, 1180px);
   }
 
@@ -1287,12 +1336,13 @@ footer a {
 
   .r2v-input,
   .r2v-input img {
-    min-height: 220px;
+    min-height: 240px;
   }
 
   .r2v-output,
   .r2v-output video {
-    min-height: 220px;
+    min-height: 200px;
+    max-height: 260px;
   }
 
   .feature-grid {
