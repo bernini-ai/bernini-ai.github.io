@@ -24,6 +24,7 @@
         <a class="nav-link" href="#overview">Overview</a>
         <a class="nav-link" href="#v2v">V2V</a>
         <a class="nav-link" href="#rv2v">RV2V</a>
+        <a class="nav-link" href="#vv2v">VV2V</a>
         <a class="nav-link" href="#r2v">R2V</a>
         <a class="nav-link" href="#framework">Framework</a>
         <a class="nav-link" href="#citation">Citation</a>
@@ -35,6 +36,7 @@
           <a href="#overview">Overview</a>
           <a href="#v2v">V2V</a>
           <a href="#rv2v">RV2V</a>
+          <a href="#vv2v">Visual Insert</a>
           <a href="#r2v">R2V</a>
           <a href="#framework">Framework</a>
           <a href="#citation">Citation</a>
@@ -58,9 +60,9 @@
         <div class="hero-layout">
           <div class="hero-copy">
             <div class="affiliation">
-            <span>Chenchen Liu<sup>*</sup>, Junyi Chen<sup>*</sup>, Lei Li<sup>*</sup>, Lu Chi<sup>*,‡</sup>, Mingzhen Sun<sup>*</sup>, Zhuoying Li<sup>*</sup>, Yi Fu, Ruoyu Guo, Yiheng Wu, Ge Bai, Zehuan Yuan<sup>†</sup></span>
-            <span class="author-note"><sup>*</sup> Equal contribution  <sup>‡</sup> Tech Lead  <sup>†</sup> Corresponding author </span>
-          </div>
+              <span>Chenchen Liu<sup>*</sup>, Junyi Chen<sup>*</sup>, Lei Li<sup>*</sup>, Lu Chi<sup>*,‡</sup>, Mingzhen Sun<sup>*</sup>, Zhuoying Li<sup>*</sup>, Yi Fu, Ruoyu Guo, Yiheng Wu, Ge Bai, Zehuan Yuan<sup>†</sup></span>
+              <span class="author-note"><sup>*</sup> Equal contribution  <sup>‡</sup> Tech Lead  <sup>†</sup> Corresponding author </span>
+            </div>
 
             <p class="hero-summary">
               Bernini is a unified framework for video generation and editing that combines an MLLM-based semantic planner with a DiT-based renderer.
@@ -72,17 +74,6 @@
               <a class="link-btn link-btn-muted" href="https://huggingface.co/your-org/Bernini" target="_blank" rel="noopener noreferrer">Model</a>
             </div>
           </div>
-
-          <!-- DEMO VIDEO !!!! -->
-          <!-- <div class="hero-demo-placeholder">
-            <div class="demo-video-frame">
-              <div class="demo-video-inner">
-                <div class="demo-play-icon"></div>
-                <p class="demo-placeholder-title">Demo Video</p>
-                <p class="demo-placeholder-copy">Placeholder for the Bernini demo video.</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </header>
@@ -103,6 +94,16 @@
       </div>
     </section>
 
+    <section class="section section-centered dark-showcase" id="vv2v">
+      <div class="container vv2v-container">
+        <h2 class="section-title">Visual Insertion: Insert Image/Video into the Video</h2>
+        <p class="section-copy">
+          Visual insertion takes an image/video as refernce, inserting it into given video. Hover over a card to play all videos.
+        </p>
+        <div class="vv2v-grid" id="vv2v-grid"></div>
+      </div>
+    </section>
+
     <section class="section section-centered dark-showcase" id="r2v">
       <div class="container r2v-container">
         <h2 class="section-title">R2V: Reference-to-Video Generation</h2>
@@ -117,12 +118,12 @@
         <p class="section-copy">Bernini contains an MLLM-based semantic planner and a DiT-based renderer.</p>
 
         <figure class="figure-panel">
-            <img src="assets/framework.png" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async">
-            <figcaption class="media-caption">
-              Unified multimodal inputs are encoded into a sequence, the MLLM planner predicts target semantic embeddings,
-              and the DiT renderer generates videos in the VAE latent space.
-            </figcaption>
-          </figure>
+          <img src="assets/framework.png" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async">
+          <figcaption class="media-caption">
+            Unified multimodal inputs are encoded into a sequence, the MLLM planner predicts target semantic embeddings,
+            and the DiT renderer generates videos in the VAE latent space.
+          </figcaption>
+        </figure>
 
         <div class="feature-grid">
           <article class="feature-card">
@@ -165,15 +166,16 @@
       <img class="footer-brand-mark" src="assets/bernini-icon.png" alt="Bernini" width="360" height="120" loading="lazy" decoding="async" />
       <p>© 2026 Bernini Team, ByteDance. All rights reserved.</p>
       <p>
-          <a href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a> ·
-          <a href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
-        </p>
+        <a href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a> ·
+        <a href="https://github.com/your-org/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
+      </p>
     </div>
   </footer>
 
   <script>
     const V2V_BASE = "assets/v2v/";
     const RV2V_BASE = "assets/rv2v/";
+    const VV2V_BASE = "assets/vv2v/";
     const R2V_BASE = "assets/r2v/";
 
     const samples = [
@@ -190,38 +192,86 @@
       { title: "A translucent phantom of an ancient astral deity emerges from the void, echoing the girl’s movements.", editType: "Add Effect", type: "v2v", output: true, sourceTitle: "effect" },
       { title: "Change the character's expression to a happy laugh.", editType: "Expression Change", type: "v2v", output: true, sourceTitle: "expression" },
 
-      { title: "Add the specific cat toy from the reference image—a fluffy, light beige, elongated plush toy with colorful braided ribbons at one end—onto the white floor directly in front of the brown cardboard couch, near the tabby cat's dangling front paw.", editType: "Object Addition", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "add" },
-      { title: "Replace the chess pieces in the video with the material shown in the reference image", editType: "Material Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频中的棋子换成图片中棋子的材质" },
-      { title: "Change the video style to the style shown in the reference image", editType: "Style Transfer", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "将视频风格改成图片中风格" },
-      { title: "Change the background according to the reference image.", editType: "Background Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "background" },
       { title: "Replace the purple flowers in the video with the white daisies from the reference image, featuring crisp white petals and prominent, textured yellow centers.", editType: "Object Replacement", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "11" },
+      { title: "Add the specific cat toy from the reference image—a fluffy, light beige, elongated plush toy with colorful braided ribbons at one end—onto the white floor directly in front of the brown cardboard couch, near the tabby cat's dangling front paw.", editType: "Object Addition", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "add" },
+      { title: "Replace the envelope in the video with the material of the envelope in the image.", editType: "Material Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "material" },
+      { title: "Change the background according to the reference image.", editType: "Background Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "background" },
+      { title: "Change the video style to the style shown in the reference image", editType: "Style Transfer", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "style" },
       { title: "Generate weather similar to the reference image", editType: "Weather Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "发生类似参考图的天气" }
-    
     ];
+
+    /*
+      VV2V 输入视频配置：
+      - 每个 case 输入两个视频，输出一个视频。
+      - 默认命名规则：
+        `${id}-input1_web.mp4`
+        `${id}-input1.webp`
+        `${id}-input2_web.mp4`
+        `${id}-input2.webp`
+        `${id}-outputvid_web.mp4`
+        `${id}-outputvid.webp`
+    */
+    const vv2vCases = [
+  {
+    id: "001",
+    title: "Insert the video into the screen.",
+    editType: "Video Insertion",
+    inputs: [
+        {
+          type: "video",
+          src: "001-input1_web.mp4",
+          poster: "001-input1.webp",
+          label: "Input Video 1"
+        },
+        {
+          type: "video",
+          src: "001-input2_web.mp4",
+          poster: "001-input2.webp",
+          label: "Input Video 2"
+        }
+      ],
+      outputVideo: "001-outputvid_web.mp4",
+      outputPoster: "001-outputvid.webp"
+    },
+    {
+      id: "002",
+      title: "Add the image to the sign on the right.",
+      editType: "Image Insertion",
+      inputs: [
+        {
+          type: "image",
+          src: "002-input1.jpg",
+          label: "Input Image"
+        },
+        {
+          type: "video",
+          src: "002-input2_web.mp4",
+          poster: "002-input2.webp",
+          label: "Input Video"
+        }
+      ],
+      outputVideo: "002-outputvid_web.mp4",
+      outputPoster: "002-outputvid.webp"
+    }
+  ];
+
 
     /*
       R2V 输入图配置：
       - inputs 支持任意数量图片。
-      - 如果某个 case 有 1 张、2 张、4 张、5 张或更多输入图，只需要修改 inputs 数组。
       - outputVideo / outputPoster 可选，不填时默认使用：
         `${id}-outputvid_web.mp4`
         `${id}-outputvid.webp`
     */
     const r2vCases = [
       {
-        id: "005",
+        id: "004",
         inputs: [
-          "005-sourceimg1.jpg",
-          "005-sourceimg2.jpg",
-          "005-sourceimg3.jpg"
-        ]
-      },
-      {
-        id: "001",
-        inputs: [
-          "001-sourceimg1.jpg",
-          "001-sourceimg2.jpg",
-          "001-sourceimg3.jpg"
+          "004-sourceimg1.jpg",
+          "004-sourceimg2.jpg",
+          "004-sourceimg3.jpg",
+          "004-sourceimg4.jpg",
+          "004-sourceimg5.jpg",
         ]
       },
       {
@@ -229,37 +279,45 @@
         inputs: [
           "002-sourceimg1.jpg",
           "002-sourceimg2.jpg",
-          // "002-sourceimg3.jpg"
-        ]
-      }
-
-      /*
-      示例：任意张输入图都可以。
-
-      {
-        id: "006",
-        inputs: [
-          "006-sourceimg1.jpg",
-          "006-sourceimg2.jpg"
+          "002-sourceimg3.jpg",
+          "002-sourceimg4.jpg",
+          "002-sourceimg5.jpg",
         ]
       },
       {
-        id: "007",
+        id: "001",
         inputs: [
-          "007-sourceimg1.jpg",
-          "007-sourceimg2.jpg",
-          "007-sourceimg3.jpg",
-          "007-sourceimg4.jpg",
-          "007-sourceimg5.jpg"
-        ],
-        outputVideo: "007-outputvid_web.mp4",
-        outputPoster: "007-outputvid.webp"
-      }
-      */
+          "001-sourceimg1.jpg",
+          "001-sourceimg2.jpg",
+          "001-sourceimg3.jpg",
+          "001-sourceimg4.jpg",
+          "001-sourceimg5.jpg",
+        ]
+      },
+      // {
+      //   id: "005",
+      //   inputs: [
+      //     "005-sourceimg1.jpg",
+      //     "005-sourceimg2.jpg",
+      //     "005-sourceimg3.jpg"
+      //   ]
+      // },
+      // {
+      //   id: "002",
+      //   inputs: [
+      //     "002-sourceimg1.jpg",
+      //     "002-sourceimg2.jpg",
+      //     // "002-sourceimg3.jpg"
+      //   ]
+      // }
     ];
 
     function asset(name, type = "v2v") {
-      const base = type === "rv2v" ? RV2V_BASE : V2V_BASE;
+      const base =
+        type === "rv2v" ? RV2V_BASE :
+        type === "vv2v" ? VV2V_BASE :
+        V2V_BASE;
+
       return base + encodeURI(name);
     }
 
@@ -292,7 +350,6 @@
       const sourcePoster = `${baseTitle}_sourcevid.webp`;
       const outputVideo = sample.output ? `${baseTitle}_outputvid_web.mp4` : `${baseTitle}_sourcevid_web.mp4`;
       const outputPoster = sample.output ? `${baseTitle}_outputvid.webp` : `${baseTitle}_sourcevid.webp`;
-      // const badge = sample.type === "rv2v" ? "RV2V" : (sample.editType || "Video Editing");
       const badge = sample.editType || (sample.type === "rv2v" ? "RV2V" : "Video Editing");
       const isRv2v = !!sample.imgExt;
 
@@ -318,6 +375,124 @@
           </div>
         </article>
       `;
+    }
+
+    function isVideoFile(src = "") {
+      return /\.(mp4|webm|mov|m4v)$/i.test(src);
+    }
+
+    function makeVV2VMedia(input, index, id) {
+      const label = input.label || `Input ${index + 1}`;
+      const src = input.src;
+      const poster = input.poster;
+
+      const mediaType = input.type || (isVideoFile(src) ? "video" : "image");
+
+      if (mediaType === "image") {
+        return `
+          <div class="vv2v-video-block vv2v-image-block">
+            <img
+              src="${asset(src, "vv2v")}"
+              alt="VV2V ${id} ${label}"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>${label}</span>
+          </div>
+        `;
+      }
+
+      const videoSrc = asset(src, "vv2v");
+      const posterSrc = poster ? asset(poster, "vv2v") : "";
+
+      return `
+        <div class="vv2v-video-block">
+          <video
+            ${posterSrc ? `poster="${posterSrc}" data-poster="${posterSrc}"` : ""}
+            data-src="${videoSrc}"
+            loop
+            muted
+            playsinline
+            preload="none"
+            aria-label="VV2V ${id} ${label}"
+          ></video>
+          <span>${label}</span>
+        </div>
+      `;
+    }
+
+    function makeVV2VOutputVideo(src, poster, label) {
+      const videoSrc = asset(src, "vv2v");
+      const posterSrc = asset(poster, "vv2v");
+
+      return `
+        <video
+          poster="${posterSrc}"
+          data-poster="${posterSrc}"
+          data-src="${videoSrc}"
+          loop
+          muted
+          playsinline
+          preload="none"
+          aria-label="${label}"
+        ></video>
+      `;
+    }
+
+    function makeVV2VCase(item) {
+      const id = item.id;
+
+      const inputs = Array.isArray(item.inputs) && item.inputs.length > 0
+        ? item.inputs
+        : [
+            {
+              type: "video",
+              src: `${id}-input1_web.mp4`,
+              poster: `${id}-input1.webp`,
+              label: "Input Video 1"
+            },
+            {
+              type: "video",
+              src: `${id}-input2_web.mp4`,
+              poster: `${id}-input2.webp`,
+              label: "Input Video 2"
+            }
+          ];
+
+      const outputVideo = item.outputVideo || `${id}-outputvid_web.mp4`;
+      const outputPoster = item.outputPoster || `${id}-outputvid.webp`;
+      const badge = item.editType || "VV2V";
+
+      return `
+        <article
+          class="vv2v-case"
+          data-vv2v-id="${id}"
+          style="--vv2v-input-count: ${inputs.length};"
+        >
+          <div class="vv2v-media-row">
+            <div class="vv2v-inputs">
+              ${inputs.map((input, index) => makeVV2VMedia(input, index, id)).join("")}
+            </div>
+
+            <div class="vv2v-output">
+              ${makeVV2VOutputVideo(outputVideo, outputPoster, `VV2V ${id} output video`)}
+              <span>Output Video</span>
+            </div>
+          </div>
+
+          <div class="vv2v-prompt">
+            <span class="sample-badge">${badge}</span>
+            <span class="prompt-text">${item.title || ""}</span>
+          </div>
+        </article>
+      `;
+    }
+
+
+    function renderVV2VCases() {
+      const grid = document.getElementById("vv2v-grid");
+      if (!grid) return;
+      grid.innerHTML = vv2vCases.map(makeVV2VCase).join("");
     }
 
     function makeR2VInputImage(src, index, id) {
@@ -379,9 +554,12 @@
         if (target) target.insertAdjacentHTML("beforeend", makeArticle(sample));
       }
 
+      renderVV2VCases();
       renderR2VCases();
+
       hydrateLazyVideos();
       enableHoverPlayback();
+      enableVV2VHoverPlayback();
       enableR2VHoverPlayback();
       enableCopyCitation();
     }
@@ -419,6 +597,26 @@
 
     function enableHoverPlayback() {
       document.querySelectorAll(".sample-card").forEach((card) => {
+        const videos = card.querySelectorAll("video");
+
+        card.addEventListener("mouseenter", () => {
+          videos.forEach((video) => {
+            loadVideoMeta(video);
+            video.play().catch(() => {});
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+        });
+      });
+    }
+
+    function enableVV2VHoverPlayback() {
+      document.querySelectorAll(".vv2v-case").forEach((card) => {
         const videos = card.querySelectorAll("video");
 
         card.addEventListener("mouseenter", () => {
