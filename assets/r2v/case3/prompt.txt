@@ -1,0 +1,1 @@
+Generate a continuous video based on reference images 0–4, without any scene cuts or shot segmentation, while maintaining smooth and stable camera movement throughout.

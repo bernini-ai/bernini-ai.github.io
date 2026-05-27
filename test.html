@@ -36,7 +36,7 @@
           <a href="#overview">Overview</a>
           <a href="#v2v">V2V</a>
           <a href="#rv2v">RV2V</a>
-          <a href="#vv2v">Visual Insert</a>
+          <a href="#vv2v">Content Insert</a>
           <a href="#r2v">R2V</a>
           <a href="#framework">Framework</a>
           <a href="#citation">Citation</a>
@@ -96,9 +96,9 @@
 
     <section class="section section-centered dark-showcase" id="vv2v">
       <div class="container vv2v-container">
-        <h2 class="section-title">Visual Insertion: Insert Image/Video into the Video</h2>
+        <h2 class="section-title">Content Insertion: Insert Image/Video into the Video</h2>
         <p class="section-copy">
-          Visual insertion takes an image/video as refernce, inserting it into given video. Hover over a card to play all videos.
+          Content insertion takes an image/video as refernce, inserting it into given video. Hover over a card to play all videos.
         </p>
         <div class="vv2v-grid" id="vv2v-grid"></div>
       </div>
@@ -212,6 +212,26 @@
         `${id}-outputvid.webp`
     */
     const vv2vCases = [
+    {
+      id: "002",
+      title: "Add the image to the sign on the right.",
+      editType: "Image Insertion",
+      inputs: [
+        {
+          type: "image",
+          src: "002-input1.jpg",
+          label: "Input Image"
+        },
+        {
+          type: "video",
+          src: "002-input2_web.mp4",
+          poster: "002-input2.webp",
+          label: "Input Video"
+        }
+      ],
+      outputVideo: "002-outputvid_web.mp4",
+      outputPoster: "002-outputvid.webp"
+    },
   {
     id: "001",
     title: "Insert the video into the screen.",
@@ -232,26 +252,6 @@
       ],
       outputVideo: "001-outputvid_web.mp4",
       outputPoster: "001-outputvid.webp"
-    },
-    {
-      id: "002",
-      title: "Add the image to the sign on the right.",
-      editType: "Image Insertion",
-      inputs: [
-        {
-          type: "image",
-          src: "002-input1.jpg",
-          label: "Input Image"
-        },
-        {
-          type: "video",
-          src: "002-input2_web.mp4",
-          poster: "002-input2.webp",
-          label: "Input Video"
-        }
-      ],
-      outputVideo: "002-outputvid_web.mp4",
-      outputPoster: "002-outputvid.webp"
     }
   ];
 
@@ -265,51 +265,45 @@
     */
     const r2vCases = [
       {
-        id: "004",
+        id: "case0",
+        editType: "Character Styling & Scene Setting",
+        title: "The marble statue from image0, wearing the black \"bernini\" T-shirt from image2, the bright blue tropical floral shorts from image3, and the pink cat-ear headphones from image1, sits centered on the wooden bench in the seaside sunset setting from image4, facing the camera in a medium shot while gently nodding, swaying, and bouncing to music, with the environment from image4 (palm trees, calm ocean, warm orange-pink-purple sunset sky) kept unchanged.",
         inputs: [
-          "004-sourceimg1.jpg",
-          "004-sourceimg2.jpg",
-          "004-sourceimg3.jpg",
-          "004-sourceimg4.jpg",
-          "004-sourceimg5.jpg",
-        ]
+          "case0/001-sourceimg1.jpg",
+          "case0/001-sourceimg2.jpg",
+          "case0/001-sourceimg3.jpg",
+          "case0/001-sourceimg4.jpg",
+          "case0/001-sourceimg5.jpg",
+        ],
+        outputVideo: "case0/001-outputvid_web.mp4",
+        outputPoster: "case0/001-outputvid.webp"
       },
       {
-        id: "002",
+        id: "case1",
+        editType: "Sculpture Cinematic Orbit",
+        title: "Bernini's David from image0, image1, image2, image3, and image4 — a photorealistic pure white marble sculpture with curly carved hair, twisting muscular torso, draped waist cloth, and taut sling drawn across the body — stands perfectly motionless on a pedestal in a quiet sleeping village at night, with darkened houses and a silhouetted cypress tree below a fixed Van Gogh Starry Night–style sky of swirling deep blue and yellow impasto, luminous stars, and a glowing crescent moon, while the camera performs a slow, steady cinematic orbital arc around the statue, keeping its pose, limbs, and sling fully consistent across every frame in a 4K cinematic look.",
         inputs: [
-          "002-sourceimg1.jpg",
-          "002-sourceimg2.jpg",
-          "002-sourceimg3.jpg",
-          "002-sourceimg4.jpg",
-          "002-sourceimg5.jpg",
-        ]
+          "case1/david0.png",
+          "case1/david1.png",
+          "case1/david2.png",
+          "case1/david3.png",
+          "case1/david4.png",
+        ],
+        outputVideo: "case1/bernini_v2v-20260526_112030254611.mp4"
       },
       {
-        id: "001",
+        id: "case3",
+        editType: "World Model Scene Generation",
+        title: "Generate a continuous video based on reference images 0–4, without any scene cuts or shot segmentation, while maintaining smooth and stable camera movement throughout.",
         inputs: [
-          "001-sourceimg1.jpg",
-          "001-sourceimg2.jpg",
-          "001-sourceimg3.jpg",
-          "001-sourceimg4.jpg",
-          "001-sourceimg5.jpg",
-        ]
-      },
-      // {
-      //   id: "005",
-      //   inputs: [
-      //     "005-sourceimg1.jpg",
-      //     "005-sourceimg2.jpg",
-      //     "005-sourceimg3.jpg"
-      //   ]
-      // },
-      // {
-      //   id: "002",
-      //   inputs: [
-      //     "002-sourceimg1.jpg",
-      //     "002-sourceimg2.jpg",
-      //     // "002-sourceimg3.jpg"
-      //   ]
-      // }
+          "case3/frame_00001.png",
+          "case3/frame_00024.png",
+          "case3/frame_00048.png",
+          "case3/frame_00072.png",
+          "case3/frame_00096.png",
+        ],
+        outputVideo: "case3/bernini_v2v-20260526_122226594743.mp4"
+      }
     ];
 
     function asset(name, type = "v2v") {
@@ -498,8 +492,8 @@
     function makeR2VInputImage(src, index, id) {
       return `
         <figure class="r2v-input">
-          <img src="${r2vAsset(src)}" alt="R2V ${id} source image ${index + 1}" loading="lazy" decoding="async" />
-          <figcaption>Input ${index + 1}</figcaption>
+          <img src="${r2vAsset(src)}" alt="R2V ${id} source image ${index}" loading="lazy" decoding="async" />
+          <figcaption>image${index}</figcaption>
         </figure>
       `;
     }
@@ -513,10 +507,11 @@
 
       const videoSrc = r2vAsset(item.outputVideo || `${id}-outputvid_web.mp4`);
       const posterSrc = r2vAsset(item.outputPoster || `${id}-outputvid.webp`);
+      const badge = item.editType || "R2V";
 
       return `
         <article
-          class="r2v-case r2v-case-no-head"
+          class="r2v-case"
           data-r2v-id="${id}"
           style="--r2v-input-count: ${inputs.length};"
         >
@@ -539,6 +534,12 @@
               <span>Output Video</span>
             </div>
           </div>
+          ${item.title ? `
+            <div class="r2v-prompt">
+              <span class="sample-badge">${badge}</span>
+              <span class="prompt-text">${item.title}</span>
+            </div>
+          ` : ''}
         </article>
       `;
     }
