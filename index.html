@@ -3,23 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Bernini: Latent Semantic Planning for Video Diffusion</title>
-  <meta
-    name="description"
-    content="Bernini is a unified framework for video generation and editing with self-supervised vision-text reasoning."
-  />
-
+  <meta name="description" content="Bernini is a unified framework for video generation and editing with self-supervised vision-text reasoning." />
   <link rel="icon" type="image/png" href="assets/bernini-icon.png" />
   <link rel="apple-touch-icon" href="assets/bernini-icon.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -27,100 +17,146 @@
   <nav class="site-nav" aria-label="Primary navigation">
     <div class="container nav-inner">
       <a class="nav-brand" href="#overview" aria-label="Bernini homepage">
-        <img
-          class="nav-logo"
-          src="assets/bernini-icon.png"
-          alt="Bernini"
-          width="360"
-          height="120"
-        />
+        <img class="nav-logo" src="assets/bernini-icon.png" alt="Bernini" width="360" height="120" />
       </a>
 
       <div class="nav-links">
         <a class="nav-link" href="#overview">Overview</a>
-        <a class="nav-link" href="#coming-soon">Coming Soon</a>
+        <a class="nav-link" href="#v2v">V2V</a>
+        <a class="nav-link" href="#rv2v">RV2V</a>
+        <a class="nav-link" href="#vv2v">VV2V</a>
+        <a class="nav-link" href="#r2v">R2V</a>
+        <a class="nav-link" href="#framework">Framework</a>
+        <a class="nav-link" href="#citation">Citation</a>
       </div>
+
+      <details class="nav-more">
+        <summary class="nav-more-toggle">More</summary>
+        <div class="nav-more-menu">
+          <a href="#overview">Overview</a>
+          <a href="#v2v">V2V</a>
+          <a href="#rv2v">RV2V</a>
+          <a href="#vv2v">Content Insert</a>
+          <a href="#r2v">R2V</a>
+          <a href="#framework">Framework</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </details>
     </div>
   </nav>
 
   <main>
     <header class="hero" id="overview">
       <div class="container">
-        <p class="eyebrow">
-          MLLM Planner · DiT Renderer · Unified Video Generation and Editing
-        </p>
+        <p class="eyebrow">MLLM Planner · DiT Renderer · Unified Video Generation and Editing</p>
 
         <h1 class="title hero-title-full">
-          <span class="hero-title-brand">Bernini</span>
-          <span class="hero-title-gradient">
-            Latent Semantic Planning for Video Diffusion
+          <span class="hero-title-brand">
+            <img class="hero-logo" src="assets/bernini-icon.png" alt="Bernini">
           </span>
+          <span class="hero-title-gradient">Latent Semantic Planning for Video Diffusion</span>
         </h1>
 
-        <div class="hero-content">
-          <div class="affiliation">
-            <span>
-              Bernini Team, ByteDance
-            </span>
-            <!-- <span class="author-note">
-              <sup>*</sup> Equal contribution ·
-              <sup>†</sup> Corresponding author · ByteDance
-            </span> -->
-          </div>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="affiliation">
+              <span>Chenchen Liu<sup>*</sup>, Junyi Chen<sup>*</sup>, Lei Li<sup>*</sup>, <a href="https://scholar.google.com/citations?user=yOVHuioAAAAJ&hl=en&oi=sra" target="_blank" rel="noopener noreferrer">Lu Chi<sup>*,‡</sup></a>, Mingzhen Sun<sup>*</sup>, Zhuoying Li<sup>*</sup>, Yi Fu, <a href="https://scholar.google.com/citations?user=qWKmH-sAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Ruoyu Guo</a>, Yiheng Wu, Ge Bai, <a href="https://scholar.google.com/citations?user=FqMOHnEAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Zehuan Yuan<sup>†</sup></a></span>
+              <span class="author-note"><sup>*</sup> Equal contribution  <sup>‡</sup> Tech Lead  <sup>†</sup> Corresponding author </span>
+              <p>Bernini Team, ByteDance</p>
+            </div>
 
-          <p class="hero-summary">
-            Bernini is a unified framework for video generation and editing with
-            self-supervised vision-text reasoning. It combines an MLLM-based
-            semantic planner with a DiT-based renderer.
-          </p>
+            <p class="hero-summary">
+              Bernini is a unified framework for video generation and editing that combines an MLLM-based semantic planner with a DiT-based renderer.
+            </p>
 
-          <!-- <div class="task-pills">
-            <span>V2V</span>
-            <span>RV2V</span>
-            <span>R2V</span>
-            <span>MLLM Planner</span>
-            <span>DiT Renderer</span>
-            <span>SA-3D RoPE</span>
-          </div> -->
-
-          <div class="links">
-            <a
-              class="link-btn"
-              href="https://arxiv.org/abs/2605.22344"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Paper
-            </a>
-            <a
-              class="link-btn link-btn-muted"
-              href="https://github.com/your-org/Bernini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Code
-            </a>
-            <a
-              class="link-btn link-btn-muted"
-              href="https://huggingface.co/your-org/Bernini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Model
-            </a>
+            <div class="links">
+              <a class="link-btn" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a>
+              <a class="link-btn link-btn-muted" href="https://github.com/bytedance/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
+              <a class="link-btn link-btn-muted" href="https://huggingface.co/ByteDance/Bernini" target="_blank" rel="noopener noreferrer">Model</a>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-    <section class="coming-section" id="coming-soon">
+    <section class="section section-centered dark-showcase" id="v2v">
+      <div class="container v2v-container">
+        <h2 class="section-title">V2V: Video Editing</h2>
+        <p class="section-copy">Prompt-driven video editing cases. Hover over a card to reveal the editing instruction and play the videos.</p>
+        <div class="video-grid" id="v2v-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-centered dark-showcase" id="rv2v">
       <div class="container">
-        <div class="coming-card">
-          <!-- <p class="coming-kicker">Demo · Code · Model · Samples</p> -->
-          <h2>Coming Soon</h2>
-          <p>
-            We are preparing the demo videos and more visual results.
-          </p>
+        <h2 class="section-title">RV2V: Reference-guided Video Editing</h2>
+        <p class="section-copy">Reference images provide object, material, weather, or style guidance.</p>
+        <div class="video-grid" id="rv2v-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-centered dark-showcase" id="vv2v">
+      <div class="container vv2v-container">
+        <h2 class="section-title">Content Insertion: Insert Image/Video into the Video</h2>
+        <p class="section-copy">
+          Content insertion takes an image/video as refernce, inserting it into given video. Hover over a card to play all videos.
+        </p>
+        <div class="vv2v-grid" id="vv2v-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-centered dark-showcase" id="r2v">
+      <div class="container r2v-container">
+        <h2 class="section-title">R2V: Reference-to-Video Generation</h2>
+        <p class="section-copy">R2V samples support up to five reference images as inputs and generate one output video. Hover over a row to play the generated video.</p>
+        <div class="r2v-list" id="r2v-list"></div>
+      </div>
+    </section>
+
+    <section class="section section-centered section-framework" id="framework">
+      <div class="container">
+        <h2 class="section-title">Framework</h2>
+        <p class="section-copy">Bernini contains an MLLM-based semantic planner and a DiT-based renderer.</p>
+
+        <figure class="figure-panel">
+          <img src="assets/framework.png" alt="Bernini framework" class="framework-img" loading="lazy" decoding="async">
+          <figcaption class="media-caption">
+            Unified multimodal inputs are encoded into a sequence, the MLLM planner predicts target semantic embeddings,
+            and the DiT renderer generates videos in the VAE latent space.
+          </figcaption>
+        </figure>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>MLLM-based Semantic Planner</h3>
+            <p>The planner reasons over text, source images, source videos, and target placeholders.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>DiT-based Renderer</h3>
+            <p>The renderer performs flow-matching denoising over VAE latent tokens.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Segment-Aware 3D RoPE</h3>
+            <p>SA-3D RoPE distinguishes tokens from different visual segments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container">
+        <h2 class="section-title">Citation</h2>
+
+        <div class="citation-card">
+          <button class="copy-citation-btn" type="button">Copy</button>
+          <pre class="citation-block"><code>@article{bernini,
+  title         = {Bernini: Latent Semantic Planning for Video Diffusion},
+  author        = {Chenchen Liu and Junyi Chen and Lei Li and Lu Chi and Mingzhen Sun and Zhuoying Li and Yi Fu and Ruoyu Guo and Yiheng Wu and Ge Bai and Zehuan Yuan},
+  journal       = {arXiv preprint arXiv:2605.22344},
+  year          = {2026}
+}</code></pre>
         </div>
       </div>
     </section>
@@ -128,36 +164,511 @@
 
   <footer>
     <div class="container">
-      <img
-        class="footer-brand-mark"
-        src="assets/bernini-icon.png"
-        alt="Bernini"
-        width="360"
-        height="120"
-        loading="lazy"
-        decoding="async"
-      />
-
+      <img class="footer-brand-mark" src="assets/bernini-icon.png" alt="Bernini" width="360" height="120" loading="lazy" decoding="async" />
       <p>© 2026 Bernini Team, ByteDance. All rights reserved.</p>
-
       <p>
-            <a
-              href="https://arxiv.org/abs/2605.22344"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Paper
-            </a>
-            ·
-            <a
-              href="https://github.com/your-org/Bernini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Code
-            </a>
-          </p>
+        <a href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener noreferrer">Paper</a> ·
+        <a href="https://github.com/bytedance/Bernini" target="_blank" rel="noopener noreferrer">Code</a>
+      </p>
     </div>
   </footer>
+
+  <script>
+    const V2V_BASE = "assets/v2v/";
+    const RV2V_BASE = "assets/rv2v/";
+    const VV2V_BASE = "assets/vv2v/";
+    const R2V_BASE = "assets/r2v/";
+
+    const samples = [
+      { title: "Split the frame with a thin black clay line; keep the original war scene on the left and transform the right side into a Russian classical court dance claymation stop-motion scene.", editType: "Style and Scene Editing", type: "v2v", output: true, sourceTitle: "composed1" },
+      { title: "Add two characters to the video and adjust the visuals to a warm, rich vintage tone with golden and ochre-red hues.", editType: "Object Addition and Tone Adjustment", type: "v2v", output: true, sourceTitle: "add1" },
+      { title: "Remove the white sheep on the left side of the video.", editType: "Object Removal", type: "v2v", output: true, sourceTitle: "删除画面左侧的那一只白羊" },
+      { title: "Convert the video into an immersive snowy winter wonderland.", editType: "Weather Change", type: "v2v", output: true, sourceTitle: "weather" },
+      { title: "Change the background from a forest to a scene in front of mountains.", editType: "Background Editing", type: "v2v", output: true, sourceTitle: "将背景由森林修改为在山峰前" },
+      { title: "Change the head up perspective to an aerial perspective.", editType: "Camera View Editing", type: "v2v", output: true, sourceTitle: "camera" },
+      { title: "Convert the screen to a cyberpunk style, change all lights to neon blue purple color scheme.", editType: "Style Transfer", type: "v2v", output: true, sourceTitle: "style" },
+      { title: "Show the strawberries after being left for ten days.", editType: "Temporal Reasoning", type: "v2v", output: true, sourceTitle: "草莓放置十天后的样子" },
+      { title: "Make the standing tiger grab the lying tiger with its paw.", editType: "Interaction Editing", type: "v2v", output: true, sourceTitle: "让站着的老虎用爪子去抓躺着的老虎" },
+      { title: "Shift the focus to the radio behind.", editType: "Focus Shift", type: "v2v", output: true, sourceTitle: "focus" },
+      { title: "A translucent phantom of an ancient astral deity emerges from the void, echoing the girl’s movements.", editType: "Add Effect", type: "v2v", output: true, sourceTitle: "effect" },
+      { title: "Change the character's expression to a happy laugh.", editType: "Expression Change", type: "v2v", output: true, sourceTitle: "expression" },
+
+      { title: "Replace the purple flowers in the video with the white daisies from the reference image, featuring crisp white petals and prominent, textured yellow centers.", editType: "Object Replacement", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "11" },
+      { title: "Add the specific cat toy from the reference image—a fluffy, light beige, elongated plush toy with colorful braided ribbons at one end—onto the white floor directly in front of the brown cardboard couch, near the tabby cat's dangling front paw.", editType: "Object Addition", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "add" },
+      { title: "Replace the envelope in the video with the material of the envelope in the image.", editType: "Material Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "material" },
+      { title: "Change the background according to the reference image.", editType: "Background Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "background" },
+      { title: "Change the video style to the style shown in the reference image", editType: "Style Transfer", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "style" },
+      { title: "Generate weather similar to the reference image", editType: "Weather Change", type: "rv2v", imgExt: "jpg", output: true, sourceTitle: "发生类似参考图的天气" }
+    ];
+
+    /*
+      VV2V 输入视频配置：
+      - 每个 case 输入两个视频，输出一个视频。
+      - 默认命名规则：
+        `${id}-input1_web.mp4`
+        `${id}-input1.webp`
+        `${id}-input2_web.mp4`
+        `${id}-input2.webp`
+        `${id}-outputvid_web.mp4`
+        `${id}-outputvid.webp`
+    */
+    const vv2vCases = [
+    {
+      id: "002",
+      title: "Add the image to the sign on the right.",
+      editType: "Image Insertion",
+      inputs: [
+        {
+          type: "image",
+          src: "002-input1.jpg",
+          label: "Input Image"
+        },
+        {
+          type: "video",
+          src: "002-input2_web.mp4",
+          poster: "002-input2.webp",
+          label: "Input Video"
+        }
+      ],
+      outputVideo: "002-outputvid_web.mp4",
+      outputPoster: "002-outputvid.webp"
+    },
+  {
+    id: "001",
+    title: "Insert the video into the screen.",
+    editType: "Video Insertion",
+    inputs: [
+        {
+          type: "video",
+          src: "001-input1_web.mp4",
+          poster: "001-input1.webp",
+          label: "Input Video 1"
+        },
+        {
+          type: "video",
+          src: "001-input2_web.mp4",
+          poster: "001-input2.webp",
+          label: "Input Video 2"
+        }
+      ],
+      outputVideo: "001-outputvid_web.mp4",
+      outputPoster: "001-outputvid.webp"
+    }
+  ];
+
+
+    /*
+      R2V 输入图配置：
+      - inputs 支持任意数量图片。
+      - outputVideo / outputPoster 可选，不填时默认使用：
+        `${id}-outputvid_web.mp4`
+        `${id}-outputvid.webp`
+    */
+    const r2vCases = [
+      {
+        id: "case0",
+        editType: "Character Styling & Scene Setting",
+        title: "The marble statue from image0, wearing the black \"bernini\" T-shirt from image2, the bright blue tropical floral shorts from image3, and the pink cat-ear headphones from image1, sits centered on the wooden bench in the seaside sunset setting from image4, facing the camera in a medium shot while gently nodding, swaying, and bouncing to music, with the environment from image4 (palm trees, calm ocean, warm orange-pink-purple sunset sky) kept unchanged.",
+        inputs: [
+          "case0/001-sourceimg1.jpg",
+          "case0/001-sourceimg2.jpg",
+          "case0/001-sourceimg3.jpg",
+          "case0/001-sourceimg4.jpg",
+          "case0/001-sourceimg5.jpg",
+        ],
+        outputVideo: "case0/001-outputvid_web.mp4",
+        outputPoster: "case0/001-outputvid.webp"
+      },
+      {
+        id: "case1",
+        editType: "Sculpture Cinematic Orbit",
+        title: "Bernini's David from image0, image1, image2, image3, and image4 — a photorealistic pure white marble sculpture with curly carved hair, twisting muscular torso, draped waist cloth, and taut sling drawn across the body — stands perfectly motionless on a pedestal in a quiet sleeping village at night, with darkened houses and a silhouetted cypress tree below a fixed Van Gogh Starry Night–style sky of swirling deep blue and yellow impasto, luminous stars, and a glowing crescent moon, while the camera performs a slow, steady cinematic orbital arc around the statue, keeping its pose, limbs, and sling fully consistent across every frame in a 4K cinematic look.",
+        inputs: [
+          "case1/david0.png",
+          "case1/david1.png",
+          "case1/david2.png",
+          "case1/david3.png",
+          "case1/david4.png",
+        ],
+        outputVideo: "case1/bernini_v2v-20260526_112030254611.mp4",
+        outputPoster: "case1/case1-outputvid.webp"
+      },
+      {
+        id: "case3",
+        editType: "World Model Scene Generation",
+        title: "Generate a continuous video based on reference images 0–4, without any scene cuts or shot segmentation, while maintaining smooth and stable camera movement throughout.",
+        inputs: [
+          "case3/frame_00001.png",
+          "case3/frame_00024.png",
+          "case3/frame_00048.png",
+          "case3/frame_00072.png",
+          "case3/frame_00096.png",
+        ],
+        outputVideo: "case3/bernini_v2v-20260526_122226594743.mp4",
+        outputPoster: "case3/case3-outputvid.webp"
+      }
+    ];
+
+    function asset(name, type = "v2v") {
+      const base =
+        type === "rv2v" ? RV2V_BASE :
+        type === "vv2v" ? VV2V_BASE :
+        V2V_BASE;
+
+      return base + encodeURI(name);
+    }
+
+    function r2vAsset(name) {
+      return R2V_BASE + encodeURI(name);
+    }
+
+    function makeVideo(src, poster, label, type = "v2v") {
+      const posterUrl = asset(poster, type);
+      return `<video poster="${posterUrl}" data-src="${asset(src, type)}" data-poster="${posterUrl}" loop muted playsinline preload="none" aria-label="${label}"></video>`;
+    }
+
+    function makeReferenceImage(sample) {
+      if (!sample.imgExt) return "";
+      const baseTitle = sample.sourceTitle || sample.title;
+      const imgName = `${baseTitle}_sourceimg.${sample.imgExt}`;
+      return `
+        <div class="sample-reference">
+          <div class="reference-stage">
+            <img src="${asset(imgName, sample.type)}" alt="Reference image for ${sample.title}" loading="lazy" decoding="async" />
+          </div>
+          <span>Reference</span>
+        </div>
+      `;
+    }
+
+    function makeArticle(sample) {
+      const baseTitle = sample.sourceTitle || sample.title;
+      const sourceVideo = `${baseTitle}_sourcevid_web.mp4`;
+      const sourcePoster = `${baseTitle}_sourcevid.webp`;
+      const outputVideo = sample.output ? `${baseTitle}_outputvid_web.mp4` : `${baseTitle}_sourcevid_web.mp4`;
+      const outputPoster = sample.output ? `${baseTitle}_outputvid.webp` : `${baseTitle}_sourcevid.webp`;
+      const badge = sample.editType || (sample.type === "rv2v" ? "RV2V" : "Video Editing");
+      const isRv2v = !!sample.imgExt;
+
+      return `
+        <article class="video-item sample-card ${isRv2v ? "rv2v-card" : ""}" data-preview-title="${sample.title}">
+          <div class="sample-media-grid ${isRv2v ? "has-reference" : ""}">
+            ${makeReferenceImage(sample)}
+
+            <div class="sample-video-pair">
+              <div class="sample-video-block">
+                ${makeVideo(sourceVideo, sourcePoster, `Source video for ${sample.title}`, sample.type)}
+              </div>
+
+              <div class="sample-video-block sample-output-block">
+                ${makeVideo(outputVideo, outputPoster, `Output video for ${sample.title}`, sample.type)}
+              </div>
+            </div>
+          </div>
+
+          <div class="video-prompt">
+            <span class="sample-badge">${badge}</span>
+            <span class="prompt-text">${sample.title}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function isVideoFile(src = "") {
+      return /\.(mp4|webm|mov|m4v)$/i.test(src);
+    }
+
+    function makeVV2VMedia(input, index, id) {
+      const label = input.label || `Input ${index + 1}`;
+      const src = input.src;
+      const poster = input.poster;
+
+      const mediaType = input.type || (isVideoFile(src) ? "video" : "image");
+
+      if (mediaType === "image") {
+        return `
+          <div class="vv2v-video-block vv2v-image-block">
+            <img
+              src="${asset(src, "vv2v")}"
+              alt="VV2V ${id} ${label}"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>${label}</span>
+          </div>
+        `;
+      }
+
+      const videoSrc = asset(src, "vv2v");
+      const posterSrc = poster ? asset(poster, "vv2v") : "";
+
+      return `
+        <div class="vv2v-video-block">
+          <video
+            ${posterSrc ? `poster="${posterSrc}" data-poster="${posterSrc}"` : ""}
+            data-src="${videoSrc}"
+            loop
+            muted
+            playsinline
+            preload="none"
+            aria-label="VV2V ${id} ${label}"
+          ></video>
+          <span>${label}</span>
+        </div>
+      `;
+    }
+
+    function makeVV2VOutputVideo(src, poster, label) {
+      const videoSrc = asset(src, "vv2v");
+      const posterSrc = asset(poster, "vv2v");
+
+      return `
+        <video
+          poster="${posterSrc}"
+          data-poster="${posterSrc}"
+          data-src="${videoSrc}"
+          loop
+          muted
+          playsinline
+          preload="none"
+          aria-label="${label}"
+        ></video>
+      `;
+    }
+
+    function makeVV2VCase(item) {
+      const id = item.id;
+
+      const inputs = Array.isArray(item.inputs) && item.inputs.length > 0
+        ? item.inputs
+        : [
+            {
+              type: "video",
+              src: `${id}-input1_web.mp4`,
+              poster: `${id}-input1.webp`,
+              label: "Input Video 1"
+            },
+            {
+              type: "video",
+              src: `${id}-input2_web.mp4`,
+              poster: `${id}-input2.webp`,
+              label: "Input Video 2"
+            }
+          ];
+
+      const outputVideo = item.outputVideo || `${id}-outputvid_web.mp4`;
+      const outputPoster = item.outputPoster || `${id}-outputvid.webp`;
+      const badge = item.editType || "VV2V";
+
+      return `
+        <article
+          class="vv2v-case"
+          data-vv2v-id="${id}"
+          style="--vv2v-input-count: ${inputs.length};"
+        >
+          <div class="vv2v-media-row">
+            <div class="vv2v-inputs">
+              ${inputs.map((input, index) => makeVV2VMedia(input, index, id)).join("")}
+            </div>
+
+            <div class="vv2v-output">
+              ${makeVV2VOutputVideo(outputVideo, outputPoster, `VV2V ${id} output video`)}
+              <span>Output Video</span>
+            </div>
+          </div>
+
+          <div class="vv2v-prompt">
+            <span class="sample-badge">${badge}</span>
+            <span class="prompt-text">${item.title || ""}</span>
+          </div>
+        </article>
+      `;
+    }
+
+
+    function renderVV2VCases() {
+      const grid = document.getElementById("vv2v-grid");
+      if (!grid) return;
+      grid.innerHTML = vv2vCases.map(makeVV2VCase).join("");
+    }
+
+    function makeR2VInputImage(src, index, id) {
+      return `
+        <figure class="r2v-input">
+          <img src="${r2vAsset(src)}" alt="R2V ${id} source image ${index}" loading="lazy" decoding="async" />
+          <figcaption>image${index}</figcaption>
+        </figure>
+      `;
+    }
+
+    function makeR2VCase(item) {
+      const id = item.id;
+
+      const inputs = Array.isArray(item.inputs) && item.inputs.length > 0
+        ? item.inputs
+        : [`${id}-sourceimg1.jpg`];
+
+      const videoSrc = r2vAsset(item.outputVideo || `${id}-outputvid_web.mp4`);
+      const posterSrc = r2vAsset(item.outputPoster || `${id}-outputvid.webp`);
+      const badge = item.editType || "R2V";
+
+      return `
+        <article
+          class="r2v-case"
+          data-r2v-id="${id}"
+          style="--r2v-input-count: ${inputs.length};"
+        >
+          <div class="r2v-media-row">
+            <div class="r2v-inputs">
+              ${inputs.map((src, index) => makeR2VInputImage(src, index, id)).join("")}
+            </div>
+
+            <div class="r2v-output">
+              <video
+                poster="${posterSrc}"
+                data-poster="${posterSrc}"
+                data-src="${videoSrc}"
+                loop
+                muted
+                playsinline
+                preload="none"
+                aria-label="R2V ${id} output video"
+              ></video>
+              <span>Output Video</span>
+            </div>
+          </div>
+          ${item.title ? `
+            <div class="r2v-prompt">
+              <span class="sample-badge">${badge}</span>
+              <span class="prompt-text">${item.title}</span>
+            </div>
+          ` : ''}
+        </article>
+      `;
+    }
+
+    function renderSamples() {
+      const groups = {
+        v2v: document.getElementById("v2v-grid"),
+        rv2v: document.getElementById("rv2v-grid")
+      };
+
+      for (const sample of samples) {
+        const target = groups[sample.type];
+        if (target) target.insertAdjacentHTML("beforeend", makeArticle(sample));
+      }
+
+      renderVV2VCases();
+      renderR2VCases();
+
+      hydrateLazyVideos();
+      enableHoverPlayback();
+      enableVV2VHoverPlayback();
+      enableR2VHoverPlayback();
+      enableCopyCitation();
+    }
+
+    function renderR2VCases() {
+      const list = document.getElementById("r2v-list");
+      if (!list) return;
+      list.innerHTML = r2vCases.map(makeR2VCase).join("");
+    }
+
+    function hydrateLazyVideos() {
+      const videos = document.querySelectorAll("video[data-src]");
+
+      if (!("IntersectionObserver" in window)) {
+        videos.forEach(loadVideoMeta);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadVideoMeta(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "320px 0px" });
+
+      videos.forEach((video) => observer.observe(video));
+    }
+
+    function loadVideoMeta(video) {
+      if (!video.src && video.dataset.src) video.src = video.dataset.src;
+      if (video.dataset.poster) video.poster = video.dataset.poster;
+      video.load();
+    }
+
+    function enableHoverPlayback() {
+      document.querySelectorAll(".sample-card").forEach((card) => {
+        const videos = card.querySelectorAll("video");
+
+        card.addEventListener("mouseenter", () => {
+          videos.forEach((video) => {
+            loadVideoMeta(video);
+            video.play().catch(() => {});
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+        });
+      });
+    }
+
+    function enableVV2VHoverPlayback() {
+      document.querySelectorAll(".vv2v-case").forEach((card) => {
+        const videos = card.querySelectorAll("video");
+
+        card.addEventListener("mouseenter", () => {
+          videos.forEach((video) => {
+            loadVideoMeta(video);
+            video.play().catch(() => {});
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+        });
+      });
+    }
+
+    function enableR2VHoverPlayback() {
+      document.querySelectorAll(".r2v-case").forEach((card) => {
+        const video = card.querySelector("video");
+        if (!video) return;
+
+        card.addEventListener("mouseenter", () => {
+          loadVideoMeta(video);
+          video.play().catch(() => {});
+        });
+
+        card.addEventListener("mouseleave", () => {
+          video.pause();
+          video.currentTime = 0;
+        });
+      });
+    }
+
+    function enableCopyCitation() {
+      const btn = document.querySelector(".copy-citation-btn");
+      const code = document.querySelector(".citation-block code");
+      if (!btn || !code) return;
+
+      btn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(code.textContent);
+        btn.textContent = "Copied";
+        setTimeout(() => btn.textContent = "Copy", 1200);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderSamples);
+  </script>
 </body>
 </html>
