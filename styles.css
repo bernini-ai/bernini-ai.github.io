@@ -305,11 +305,39 @@ summary {
   filter: saturate(1.08);
 }
 
-.link-btn-muted {
+/* 三个按钮默认统一的 muted 样式 */
+.link-btn-paper,
+.link-btn-code,
+.link-btn-model {
   color: #4d5c77;
   background: rgba(255, 255, 255, .78);
   border: 1px solid rgba(126, 151, 196, .32);
   box-shadow: 0 10px 24px rgba(90, 113, 156, .1);
+  transition: all .22s ease;
+}
+
+/* Paper 按钮悬停：紫色渐变 */
+.link-btn-paper:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #8f6fd6 0%, #6f7de8 100%);
+  border-color: rgba(255, 255, 255, .32);
+  box-shadow: 0 16px 36px rgba(143, 111, 214, .28);
+}
+
+/* Code 按钮悬停：蓝色渐变 */
+.link-btn-code:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #4f8fda 0%, #6fb8e8 100%);
+  border-color: rgba(255, 255, 255, .32);
+  box-shadow: 0 16px 36px rgba(79, 143, 218, .28);
+}
+
+/* Model 按钮悬停：Hugging Face 黄色渐变 */
+.link-btn-model:hover {
+  color: #111827;
+  background: linear-gradient(135deg, #ffd21e 0%, #ffe680 100%);
+  border-color: rgba(255, 255, 255, .32);
+  box-shadow: 0 16px 36px rgba(255, 210, 30, .28);
 }
 
 .demo-video-frame {
